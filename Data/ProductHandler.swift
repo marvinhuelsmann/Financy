@@ -34,6 +34,11 @@ struct ProductHandler {
         saveContext(viewContext: viewContext)
     }
     
+    func getWidgetProduct() -> Product {
+        let product = products.randomElement()
+        return Product(uuid: (product?.uuid)!, name: (product?.name)!, icon: (product?.icon)!, price: product!.price, date: (product?.date)!)
+    }
+    
     func createProduct(name: String, price: Int16, icon: String, viewContext: NSManagedObjectContext) {
         let newProduct = Products(context: viewContext)
         newProduct.uuid = UUID()

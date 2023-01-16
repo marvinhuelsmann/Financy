@@ -20,6 +20,12 @@
 		4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C729296B6E8000371740 /* BiometricType.swift */; };
 		4BEA120C2969FA2800438E38 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA120B2969FA2800438E38 /* SplashScreen.swift */; };
 		4BEA120F2969FABB00438E38 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA120E2969FABB00438E38 /* SettingsView.swift */; };
+		4BF018062975E8C7000DC1A8 /* Lockscreen_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54ECCD2975933100B5B762 /* Lockscreen_Widgets.swift */; };
+		4BF018082975E972000DC1A8 /* Financy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BD12936A6EB000146CC /* Financy.xcdatamodeld */; };
+		4BF018092975EC2D000DC1A8 /* Financy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BD12936A6EB000146CC /* Financy.xcdatamodeld */; };
+		4BF0180C2975EC71000DC1A8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF0180B2975EC71000DC1A8 /* Product.swift */; };
+		4BF0180D2975ECA7000DC1A8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF0180B2975EC71000DC1A8 /* Product.swift */; };
+		4BF0180E2975EDB4000DC1A8 /* ProductHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BD72936A78F000146CC /* ProductHandler.swift */; };
 		4BF37BA229368F6C000146CC /* FinancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BA129368F6C000146CC /* FinancyApp.swift */; };
 		4BF37BA429368F6C000146CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BA329368F6C000146CC /* ContentView.swift */; };
 		4BF37BA629368F6E000146CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF37BA529368F6E000146CC /* Assets.xcassets */; };
@@ -89,6 +95,7 @@
 		4B61C729296B6E8000371740 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
 		4BEA120B2969FA2800438E38 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		4BEA120E2969FABB00438E38 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4BF0180B2975EC71000DC1A8 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		4BF37B9E29368F6C000146CC /* Financy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Financy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF37BA129368F6C000146CC /* FinancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancyApp.swift; sourceTree = "<group>"; };
 		4BF37BA329368F6C000146CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -173,6 +180,14 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		4BF0180A2975EC66000DC1A8 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				4BF0180B2975EC71000DC1A8 /* Product.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
 		4BF37B9529368F6C000146CC = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +264,7 @@
 		4BF37BD42936A747000146CC /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4BF0180A2975EC66000DC1A8 /* Type */,
 				4BF37BD12936A6EB000146CC /* Financy.xcdatamodeld */,
 				4BF37BD52936A758000146CC /* Persistence.swift */,
 				4BF37BD72936A78F000146CC /* ProductHandler.swift */,
@@ -439,8 +455,11 @@
 			files = (
 				4B54ECCA2975933100B5B762 /* Lockscreen_WidgetsBundle.swift in Sources */,
 				4B54ECCE2975933100B5B762 /* Lockscreen_Widgets.swift in Sources */,
+				4BF018092975EC2D000DC1A8 /* Financy.xcdatamodeld in Sources */,
+				4BF0180E2975EDB4000DC1A8 /* ProductHandler.swift in Sources */,
 				4B54ECCC2975933100B5B762 /* Lockscreen_WidgetsLiveActivity.swift in Sources */,
 				4B54ECD32975933200B5B762 /* Lockscreen_Widgets.intentdefinition in Sources */,
+				4BF0180D2975ECA7000DC1A8 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,8 +469,10 @@
 			files = (
 				4BF37BD32936A6EB000146CC /* Financy.xcdatamodeld in Sources */,
 				4BF37BA429368F6C000146CC /* ContentView.swift in Sources */,
+				4BF018062975E8C7000DC1A8 /* Lockscreen_Widgets.swift in Sources */,
 				4BF37BDA2936AAE4000146CC /* CreateProduct.swift in Sources */,
 				4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */,
+				4BF0180C2975EC71000DC1A8 /* Product.swift in Sources */,
 				4BF37BE22938063E000146CC /* TransactionsChart.swift in Sources */,
 				4BF37BD82936A78F000146CC /* ProductHandler.swift in Sources */,
 				4BF37BCD29368FBB000146CC /* ProductPlanner.swift in Sources */,
@@ -470,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF018082975E972000DC1A8 /* Financy.xcdatamodeld in Sources */,
 				4BF37BB329368F6E000146CC /* FinancyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

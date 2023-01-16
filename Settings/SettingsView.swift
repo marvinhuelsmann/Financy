@@ -18,8 +18,6 @@ struct SettingsView: View {
     @AppStorage("notifications") var allowNotifications = true
     @AppStorage("secureOnLogin") var requiredPasswordIdOnLogin = false
     
-    @AppStorage("widgetProduct") var widgetProduct = 1
-    
     var body: some View {
         VStack {
             Form {
@@ -31,17 +29,6 @@ struct SettingsView: View {
                     Toggle("Benachrichtigung", isOn: $allowNotifications)
                 }
                 
-                Section(header: Text("Widget Produkt"), footer: Text("Das Produkt, dass in den Widgets angezeigt werden soll.")) {
-                    Picker("Widget", selection: $widgetProduct) {
-                        ForEach(products, id: \.self) { product in
-                            HStack {
-                                Image(systemName: product.icon!)
-                                Text(product.name!)
-                            }
-                        }
-                    }
-                    .pickerStyle(.navigationLink)
-                }
             }
         }
         .navigationTitle("Einstellungen")
