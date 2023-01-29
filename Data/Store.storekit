@@ -1,0 +1,56 @@
+{
+  "identifier" : "0EFB00E8",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "22EA9FBE",
+      "localizations" : [
+
+      ],
+      "name" : "com.marvhuelsmann.financy.pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "6.49",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "42595414",
+          "introductoryOffer" : {
+            "internalID" : "EA4F2AB0",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "Default description",
+              "displayName" : "Financy Pro",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.temporary.financy.pro",
+          "recurringSubscriptionPeriod" : "P3M",
+          "referenceName" : "Financy Pro",
+          "subscriptionGroupID" : "22EA9FBE",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
