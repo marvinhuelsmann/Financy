@@ -9,14 +9,14 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Lockscreen WidgetsExtension.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4B54ECC12975933100B5B762</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4BF37B9D29368F6C000146CC</key>
 		<dict>
 			<key>primary</key>
