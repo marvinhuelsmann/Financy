@@ -34,8 +34,8 @@ struct SettingsView: View {
                     Toggle("Benachrichtigung", isOn: $allowNotifications)
                 }
                 
-                Section(header: Text("Abonnements"), footer: Text("Mit dem Kauf eines Abonnements unterstützt du Financy und seinen Entwickler.")) {
-                    ForEach(storeKit.storeProducts) {product in
+                Section(header: Text("Produkte"), footer: Text("Mit dem Kauf eines Produktes unterstützt du Financy und seinen Entwickler.")) {
+                    ForEach(storeKit.storeProducts) { product in
                         HStack {
                             Text(product.displayName)
                                 .bold()
@@ -63,6 +63,10 @@ struct SettingsView: View {
                         try? await AppStore.sync()
                     }
                 })
+                
+                Section(header: Text("Financy " +  Financy().getFinancyVersion() + " © All rights reserved - 2023 "), footer: Text("Entwickelt von Marvin Hülsmann in Deutschland. Fehler oder Ideen können auf Twitter (@marvhuelsmann) eingereicht werden!")) {
+                
+                }
                 
             }
         }

@@ -17,15 +17,17 @@ struct TransactionsChart: View {
     var body: some View {
         VStack {
             if !isTransactionIsEmpty() {
-                Chart(transactions) { transaction in
+                Chart(transactions ) { transaction in
                     if transaction.productID == productID {
                         BarMark(
                             x: .value("Date", (transaction.date?.formatted(.dateTime.weekday(.wide)))!),
                             y: .value("Price", transaction.money)
                         )
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.orange]), startPoint: .top, endPoint: .bottom))
+                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.orange, Color.purple]), startPoint: .top, endPoint: .bottom))
                     }
                 }
+            
+            
             } else {
                 VStack {
                     Spacer()
@@ -34,6 +36,9 @@ struct TransactionsChart: View {
                     Text("Keine Bilanz")
                         .bold()
                         .font(.title)
+                    Text("Zu wenig Daten gesammelt.")
+                        .fontWeight(.regular)
+                        .font(.footnote)
                     Spacer()
                 }
             }
@@ -48,7 +53,7 @@ struct TransactionsChart: View {
             }
         }
         
-        return i == 0
+        return i < 2
     }
 }
 

@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		4B54ECDD297593B300B5B762 /* IconLibary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54ECDC297593B300B5B762 /* IconLibary.swift */; };
 		4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C729296B6E8000371740 /* BiometricType.swift */; };
+		4BA83DD529894E67009AAA7D /* EditGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA83DD429894E67009AAA7D /* EditGroup.swift */; };
+		4BA83DD829895646009AAA7D /* EditGroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA83DD729895646009AAA7D /* EditGroupDetail.swift */; };
 		4BE76E062985FC240086BEDA /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E052985FC240086BEDA /* StoreKitManager.swift */; };
 		4BE76E082986B7EF0086BEDA /* ProductList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BE76E072986B7EF0086BEDA /* ProductList.plist */; };
 		4BE76E0A2986BEE40086BEDA /* SplashScreenFinacyPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E092986BEE40086BEDA /* SplashScreenFinacyPro.swift */; };
+		4BE76E0C298721140086BEDA /* EditProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E0B298721140086BEDA /* EditProduct.swift */; };
+		4BE76E0E2988438D0086BEDA /* GroupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E0D2988438D0086BEDA /* GroupHandler.swift */; };
+		4BE76E10298845B80086BEDA /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E0F298845B80086BEDA /* CreateGroup.swift */; };
+		4BE76E12298849540086BEDA /* ChangeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E11298849540086BEDA /* ChangeGroup.swift */; };
 		4BEA120C2969FA2800438E38 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA120B2969FA2800438E38 /* SplashScreen.swift */; };
 		4BEA120F2969FABB00438E38 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA120E2969FABB00438E38 /* SettingsView.swift */; };
 		4BF018082975E972000DC1A8 /* Financy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BD12936A6EB000146CC /* Financy.xcdatamodeld */; };
@@ -30,6 +36,8 @@
 		4BF37BDC2937D522000146CC /* TransactionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BDB2937D522000146CC /* TransactionHandler.swift */; };
 		4BF37BDE2937D7DD000146CC /* CreateTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BDD2937D7DD000146CC /* CreateTransaction.swift */; };
 		4BF37BE22938063E000146CC /* TransactionsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BE12938063E000146CC /* TransactionsChart.swift */; };
+		4BF42F2F29A565200075F37D /* ColorLibary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF42F2E29A565200075F37D /* ColorLibary.swift */; };
+		4BF42F3329A6A6D80075F37D /* Financy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF42F3229A6A6D80075F37D /* Financy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +75,16 @@
 		4B54ECC62975933100B5B762 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4B54ECDC297593B300B5B762 /* IconLibary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLibary.swift; sourceTree = "<group>"; };
 		4B61C729296B6E8000371740 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
+		4BA83DD429894E67009AAA7D /* EditGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroup.swift; sourceTree = "<group>"; };
+		4BA83DD729895646009AAA7D /* EditGroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDetail.swift; sourceTree = "<group>"; };
 		4BE76E042985FBE10086BEDA /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
 		4BE76E052985FC240086BEDA /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		4BE76E072986B7EF0086BEDA /* ProductList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ProductList.plist; sourceTree = "<group>"; };
 		4BE76E092986BEE40086BEDA /* SplashScreenFinacyPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenFinacyPro.swift; sourceTree = "<group>"; };
+		4BE76E0B298721140086BEDA /* EditProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProduct.swift; sourceTree = "<group>"; };
+		4BE76E0D2988438D0086BEDA /* GroupHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHandler.swift; sourceTree = "<group>"; };
+		4BE76E0F298845B80086BEDA /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
+		4BE76E11298849540086BEDA /* ChangeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeGroup.swift; sourceTree = "<group>"; };
 		4BEA120B2969FA2800438E38 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		4BEA120E2969FABB00438E38 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4BF37B9E29368F6C000146CC /* Financy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Financy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +105,8 @@
 		4BF37BDB2937D522000146CC /* TransactionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHandler.swift; sourceTree = "<group>"; };
 		4BF37BDD2937D7DD000146CC /* CreateTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransaction.swift; sourceTree = "<group>"; };
 		4BF37BE12938063E000146CC /* TransactionsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsChart.swift; sourceTree = "<group>"; };
+		4BF42F2E29A565200075F37D /* ColorLibary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLibary.swift; sourceTree = "<group>"; };
+		4BF42F3229A6A6D80075F37D /* Financy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Financy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +141,16 @@
 				4B54ECC62975933100B5B762 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BA83DD62989562C009AAA7D /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				4BA83DD429894E67009AAA7D /* EditGroup.swift */,
+				4BA83DD729895646009AAA7D /* EditGroupDetail.swift */,
+				4BE76E11298849540086BEDA /* ChangeGroup.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		4BEA120D2969FAAE00438E38 /* Settings */ = {
@@ -210,15 +236,14 @@
 		4BF37BD42936A747000146CC /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				4BF37BD12936A6EB000146CC /* Financy.xcdatamodeld */,
-				4BF37BD52936A758000146CC /* Persistence.swift */,
-				4BF37BD72936A78F000146CC /* ProductHandler.swift */,
-				4BF37BDB2937D522000146CC /* TransactionHandler.swift */,
-				4B61C729296B6E8000371740 /* BiometricType.swift */,
-				4B54ECDC297593B300B5B762 /* IconLibary.swift */,
-				4BE76E052985FC240086BEDA /* StoreKitManager.swift */,
-				4BE76E042985FBE10086BEDA /* Store.storekit */,
+				4BF42F3129A6A6A80075F37D /* Types */,
+				4BF42F3029A6A6910075F37D /* Handler */,
+				4BF42F2D29A5650F0075F37D /* Libary */,
 				4BE76E072986B7EF0086BEDA /* ProductList.plist */,
+				4BF37BD12936A6EB000146CC /* Financy.xcdatamodeld */,
+				4BE76E042985FBE10086BEDA /* Store.storekit */,
+				4BF37BD52936A758000146CC /* Persistence.swift */,
+				4BF42F3229A6A6D80075F37D /* Financy.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -228,6 +253,7 @@
 			children = (
 				4BF37BD92936AAE4000146CC /* CreateProduct.swift */,
 				4BF37BDD2937D7DD000146CC /* CreateTransaction.swift */,
+				4BE76E0F298845B80086BEDA /* CreateGroup.swift */,
 			);
 			path = CreateViews;
 			sourceTree = "<group>";
@@ -236,8 +262,38 @@
 			isa = PBXGroup;
 			children = (
 				4BF37BE12938063E000146CC /* TransactionsChart.swift */,
+				4BE76E0B298721140086BEDA /* EditProduct.swift */,
+				4BA83DD62989562C009AAA7D /* Groups */,
 			);
 			path = DetailViews;
+			sourceTree = "<group>";
+		};
+		4BF42F2D29A5650F0075F37D /* Libary */ = {
+			isa = PBXGroup;
+			children = (
+				4B54ECDC297593B300B5B762 /* IconLibary.swift */,
+				4BF42F2E29A565200075F37D /* ColorLibary.swift */,
+			);
+			path = Libary;
+			sourceTree = "<group>";
+		};
+		4BF42F3029A6A6910075F37D /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				4BE76E0D2988438D0086BEDA /* GroupHandler.swift */,
+				4BF37BDB2937D522000146CC /* TransactionHandler.swift */,
+				4BF37BD72936A78F000146CC /* ProductHandler.swift */,
+				4BE76E052985FC240086BEDA /* StoreKitManager.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		4BF42F3129A6A6A80075F37D /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				4B61C729296B6E8000371740 /* BiometricType.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +429,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BF37BD32936A6EB000146CC /* Financy.xcdatamodeld in Sources */,
+				4BF42F2F29A565200075F37D /* ColorLibary.swift in Sources */,
+				4BE76E0C298721140086BEDA /* EditProduct.swift in Sources */,
 				4BF37BA429368F6C000146CC /* ContentView.swift in Sources */,
 				4BF37BDA2936AAE4000146CC /* CreateProduct.swift in Sources */,
 				4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */,
@@ -380,10 +438,16 @@
 				4BF37BD82936A78F000146CC /* ProductHandler.swift in Sources */,
 				4BF37BCD29368FBB000146CC /* ProductPlanner.swift in Sources */,
 				4BEA120C2969FA2800438E38 /* SplashScreen.swift in Sources */,
+				4BA83DD529894E67009AAA7D /* EditGroup.swift in Sources */,
+				4BA83DD829895646009AAA7D /* EditGroupDetail.swift in Sources */,
 				4B54ECDD297593B300B5B762 /* IconLibary.swift in Sources */,
 				4BF37BA229368F6C000146CC /* FinancyApp.swift in Sources */,
+				4BE76E10298845B80086BEDA /* CreateGroup.swift in Sources */,
+				4BE76E0E2988438D0086BEDA /* GroupHandler.swift in Sources */,
+				4BF42F3329A6A6D80075F37D /* Financy.swift in Sources */,
 				4BF37BDE2937D7DD000146CC /* CreateTransaction.swift in Sources */,
 				4BE76E062985FC240086BEDA /* StoreKitManager.swift in Sources */,
+				4BE76E12298849540086BEDA /* ChangeGroup.swift in Sources */,
 				4BE76E0A2986BEE40086BEDA /* SplashScreenFinacyPro.swift in Sources */,
 				4BEA120F2969FABB00438E38 /* SettingsView.swift in Sources */,
 				4BF37BD62936A758000146CC /* Persistence.swift in Sources */,

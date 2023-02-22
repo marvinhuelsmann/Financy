@@ -14,6 +14,14 @@ struct ProductPlanner: View {
     var productID: UUID
     var productName: String
     var productAmount: Int
+    var productIcon: String
+    
+    @StateObject var storeKit = StoreKitManager()
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(sortDescriptors: [])
+    var groups: FetchedResults<Groups>
+    @FetchRequest(sortDescriptors: [])
+    var groupedProducts: FetchedResults<GroupedProducts>
     
     var body: some View {
         VStack {
@@ -45,18 +53,48 @@ struct ProductPlanner: View {
         }
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: CreateTransaction(productID: productID)) {
-                    Text("Geld hinzufügen")
+                Menu {
+                    NavigationLink(destination: CreateTransaction(productID: productID)) {
+                        Text("Geld hinzufügen")
+                        Image(systemName: "plus")
+                    }
+                    NavigationLink(destination: ChangeGroup(productUUID: productID, groupName: getGroupName()!)) {
+                        Text("Gruppe bearbeiten")
+                        Image(systemName: "square.on.square.squareshape.controlhandles")
+                    }
+                    NavigationLink(destination: EditProduct(productID: productID, productName: productName, productIcon: productIcon, productPrice: String(productAmount))) {
+                        Text("Produkt bearbeiten")
+                        Image(systemName: "pencil")
+                    }
+                    .disabled(!storeKit.hasFinancyPro())
+                } label: {
+                    Image(systemName: "ellipsis.circle")
                 }
             }
         })
         .navigationTitle(productName)
     }
+    
+    func getGroupName() -> Groups? {
+        for groupedProduct in groupedProducts {
+            if groupedProduct.productUUID == productID {
+                let groupUUID = groupedProduct.groupUUID
+                
+                for group in groups {
+                    if group.uuid == groupUUID {
+                        return group
+                    }
+                }
+            }
+        }
+        return nil
+        
+    }
 }
 
 struct ProductPlanner_Previews: PreviewProvider {
     static var previews: some View {
-        ProductPlanner(productID: UUID(), productName: "Test", productAmount: 900)
+        ProductPlanner(productID: UUID(), productName: "Test", productAmount: 900, productIcon: "applewatch")
     }
 }
 
@@ -87,8 +125,6 @@ struct TransactionDetailView: View {
                     }
                 }
                 .onDelete(perform: deleteProduct)
-            }.refreshable {
-                
             }
             .environment(\.locale, Locale.init(identifier: "de"))
             .cornerRadius(15)
@@ -133,7 +169,7 @@ struct TransactionDetailView: View {
             
             saveContext(viewContext: viewContext)
         }
-      }
+    }
 }
 
 struct WeeklySpendDetailView: View {
@@ -148,7 +184,7 @@ struct WeeklySpendDetailView: View {
             VStack {
                 HStack {
                     Text("Wochen Aktivität")
-                        .foregroundColor(!darkMode ? .black : .white)
+                        .foregroundColor(!darkMode ? .black : .gray)
                         .font(.callout)
                         .fontWeight(.medium)
                     Spacer()
@@ -157,12 +193,14 @@ struct WeeklySpendDetailView: View {
                     TransactionsChart(productID: productID)
                     
                 }
-                HStack {
-                    Text(trendingStatus())
-                        .font(.subheadline)
-                        .foregroundColor(!darkMode ? .black : .white)
-                    
-                    Spacer()
+                if trendingStatus() != "" {
+                    HStack {
+                        Text(trendingStatus())
+                            .font(.subheadline)
+                            .foregroundColor(!darkMode ? .black : .gray)
+                        
+                        Spacer()
+                    }
                 }
             }
             .padding(.leading, 5)
@@ -176,17 +214,17 @@ struct WeeklySpendDetailView: View {
     
     func trendingStatus() -> String {
         if transactions.isEmpty {
-            return "Kein Trend"
+            return ""
         } else {
             if transactions.count >= 8 {
                 return "Hoher aufsteigender Trend"
             } else if transactions.count >= 4 {
                 return "Aufsteigender Trend"
             } else if transactions.count >= 2 {
-                return "Langsamer Trend"
+                return "Langsamer steigender Trend"
             }
         }
-        return "Kein Trend"
+        return ""
     }
 }
 
@@ -212,7 +250,7 @@ struct GetMoneyInformationDetailView: View {
                     Text(isReadyFor30Days() ? "Bereit!" : "Nein!")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
-                        .foregroundColor(isReadyFor30Days() ? .green : .yellow)
+                        .foregroundColor(isReadyFor30Days() ? .green : .red)
                     Spacer()
                 }
                 HStack {
@@ -227,7 +265,7 @@ struct GetMoneyInformationDetailView: View {
         }
         .frame(width: 175)
         .multilineTextAlignment(.leading)
-        .background(!darkMode ? .black : .white)
+        .background(!darkMode ? .black : .white.opacity(0.9))
         .cornerRadius(10)
         .shadow(radius: 4)
     }
@@ -252,9 +290,9 @@ struct GetMoneyInformationDetailView: View {
             if transaction.productID == productID {
                 let today = Date()
                 let thirtyDaysFromToday = Calendar.current.date(byAdding: .day, value: 30, to: today)!
-
+                
                 if transaction.date! >= today && transaction.date! <= thirtyDaysFromToday {
-                        i = i + Int(transaction.money)
+                    i = i + Int(transaction.money)
                 }
             }
         }
@@ -267,7 +305,7 @@ struct GetMoneyInformationDetailView: View {
             if transaction.productID == productID {
                 let today = Date()
                 let thirtyDaysFromToday = Calendar.current.date(byAdding: .day, value: 30, to: today)!
-
+                
                 if transaction.date! >= today && transaction.date! <= thirtyDaysFromToday {
                     i = i + Int(transaction.money)
                 }
@@ -323,7 +361,7 @@ struct AllSpendAmountDetailView: View {
         }
         .frame(width: 200)
         .multilineTextAlignment(.leading)
-        .background(!darkMode ? .black : .white)
+        .background(!darkMode ? .black : .white.opacity(0.9))
         .cornerRadius(10)
         .shadow(radius: 4)
     }

@@ -7,21 +7,27 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct CreateProduct: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(sortDescriptors: [])
+    var products: FetchedResults<Products>
     
     /// form inputs
     @State private var name: String = ""
     @State private var price: String = ""
     
-    @State private var iconName: String = ""
+    @State private var iconName: String = "xmark"
     
     @State private var hasFillForm: Bool = true
+    @State private var enoughProducts: Bool = false
     
-    @State private var avaibleIcons = IconLibary().getAvaibleIcons().shuffled()
+    @State private var avaibleIcons = IconLibary().getAvaibleProductIcons().shuffled()
+    
+    @StateObject var storeKit = StoreKitManager()
     
     var body: some View {
         VStack {
@@ -55,8 +61,8 @@ struct CreateProduct: View {
                     HStack(alignment: .center) {
                         Spacer()
                         Button("Produkt hinzufügen") {
-                            if name != "" {
-                                makeProdukt()
+                            if name != "" && iconName != "" {
+                                makeProdukt(iconName: iconName)
                             } else {
                                 hasFillForm = false
                             }
@@ -76,14 +82,70 @@ struct CreateProduct: View {
                     }
                     
                 }
+                if enoughProducts {
+                    HStack {
+                        Spacer()
+                        Text("Du hast bereits dein Limit an Produkten erreicht, kaufe Sparky Pro um mehr Produkte hinzufügen zu können!")
+                            .multilineTextAlignment(.center)
+                        Spacer()
+                    }
+                    
+                }
             }
         }
         .navigationTitle("Neues Produkt")
     }
     
-    func makeProdukt() {
-        ProductHandler().createProduct(name: name, price: Int16(price)!, icon: iconName, viewContext: viewContext)
-        mode.wrappedValue.dismiss()
+    func canCreateMoreProducts() -> Bool {
+        if !storeKit.hasFinancyPro() {
+            if products.count <= 4 {
+                return true
+            } else {
+                enoughProducts.toggle()
+                return false
+            }
+        } else {
+            return true
+        }
+    }
+    
+    func makeProdukt(iconName: String) {
+        if canCreateMoreProducts() {
+            createProduct(name: name, price: Int64(price)!, icon: iconName, viewContext: viewContext)
+            mode.wrappedValue.dismiss()
+        } else {
+            
+        }
+    }
+    
+    func createProduct(name: String, price: Int64, icon: String, viewContext: NSManagedObjectContext) {
+        let uuid = UUID()
+        
+        if products.isEmpty {
+            GroupHandler().createNoCategoryGroup(productUUID: uuid, viewContext: viewContext)
+        } else {
+            GroupHandler().addProductToGroup(productUUID: uuid, groupUUID: UUID(uuidString: "c758ec2a-a0de-11ed-a8fc-0242ac120002")!, viewContext: viewContext)
+        }
+        
+        let newProduct = Products(context: viewContext)
+        newProduct.uuid = uuid
+        newProduct.name = name
+        newProduct.price = price
+        newProduct.date = Date()
+        
+        newProduct.icon = icon
+        
+        saveContext(viewContext: viewContext)
+    }
+    
+    /// Save the Context
+    func saveContext(viewContext: NSManagedObjectContext) {
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved Error: \(error)")
+        }
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 import LocalAuthentication
 
-@main
+  @main
 struct FinancyApp: App {
     let persistenceContainer = PersistenceController.shared
     

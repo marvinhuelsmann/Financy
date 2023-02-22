@@ -2,7 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>10x Products</key>
+	<string>com.marvhuelsmann.financy.products.10</string>
 	<key>Financy Pro</key>
-	<string>com.temporary.financy.pro</string>
+	<string>com.marvhuelsmann.financy.pro</string>
 </dict>
 </plist>

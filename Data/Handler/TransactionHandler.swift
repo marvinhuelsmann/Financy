@@ -34,7 +34,7 @@ struct TransactionHandler {
         newTransaction.uuid = UUID()
         newTransaction.reason = reason
         newTransaction.productID = productID
-        newTransaction.money = Int16(money)
+        newTransaction.money = Int64(money)
         newTransaction.date = date
         
         saveContext(viewContext: viewContext)

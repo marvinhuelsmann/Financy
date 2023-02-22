@@ -4,7 +4,26 @@
 
   ],
   "products" : [
-
+    {
+      "displayPrice" : "3.49",
+      "familyShareable" : false,
+      "internalID" : "751F3AA0",
+      "localizations" : [
+        {
+          "description" : "for max 15 products",
+          "displayName" : "10 extra products",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Fpr maximal 15 Produkte",
+          "displayName" : "10 extra Produkte",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "com.marvhuelsmann.financy.products.10",
+      "referenceName" : "10x Products",
+      "type" : "NonConsumable"
+    }
   ],
   "settings" : {
 
@@ -38,9 +57,14 @@
               "description" : "Default description",
               "displayName" : "Financy Pro",
               "locale" : "en_US"
+            },
+            {
+              "description" : "Standard Beschreibung",
+              "displayName" : "Financy Pro",
+              "locale" : "de"
             }
           ],
-          "productID" : "com.temporary.financy.pro",
+          "productID" : "com.marvhuelsmann.financy.pro",
           "recurringSubscriptionPeriod" : "P3M",
           "referenceName" : "Financy Pro",
           "subscriptionGroupID" : "22EA9FBE",

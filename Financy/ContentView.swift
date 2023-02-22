@@ -12,6 +12,10 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [])
     var products: FetchedResults<Products>
+    @FetchRequest(sortDescriptors: [])
+    var groups: FetchedResults<Groups>
+    @FetchRequest(sortDescriptors: [])
+    var groupedProducts: FetchedResults<GroupedProducts>
     
     @State private var path: [Products] = []
     
@@ -20,33 +24,21 @@ struct ContentView: View {
             VStack {
                 if !products.isEmpty {
                     List {
-                        ForEach(products, id: \.self) { product in
-                            NavigationLink(value: product) {
-                                HStack {
-                                    VStack {
-                                    Image(systemName: product.icon!)
-                                            .frame(width: 16, height: 16)
-                                            .foregroundColor(.white)
-                                            .padding(15)
-                                            .background(Color(UIColor.lightGray))
-                                            .clipShape(Circle())
+                        ForEach(groups, id: \.self) { group in
+                            if hasGroupMember(groupUUID: group.uuid!) {
+                                Section(header: Text(group.name!).bold()) {
+                                    ForEach(groupedProducts, id: \.self) { groupedProducts in
+                                        if groupedProducts.groupUUID == group.uuid {
+                                            DetailGroupView(groupedProductUUID: groupedProducts.productUUID!, groupColor: group.color!)
+                                        }
                                     }
-                                    VStack(alignment: .leading) {
-                                        Text(product.name!)
-                                        Text("Hinzugefügt am " +  product.date!.formatted(.dateTime.month().day()))
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                    }
-                                    Spacer()
-                                    Text("\(product.price)€")
-                                        .bold()
                                 }
                             }
                         }
-                        .onDelete(perform: deleteProduct)
                     }
+                    .environment(\.locale, Locale.init(identifier: "de"))
                     .navigationDestination(for: Products.self) { product in
-                        ProductPlanner(productID: product.uuid!, productName: product.name!, productAmount: Int(product.price))
+                        ProductPlanner(productID: product.uuid!, productName: product.name!, productAmount: Int(product.price), productIcon: product.icon!)
                     }
                 } else {
                     VStack {
@@ -64,10 +56,20 @@ struct ContentView: View {
             }
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: CreateProduct()) {
-                        HStack {
-                            Text("Neues Produkt")
+                    Menu {
+                        NavigationLink(destination: CreateProduct()) {
+                            HStack {
+                                Text("Neues Produkt")
+                                Image(systemName: "plus")
+                            }
                         }
+                        NavigationLink(destination: EditGroup()) {
+                            Text("Gruppen bearbeiten")
+                            Image(systemName: "rectangle.3.group")
+                        }
+                        .disabled(products.isEmpty)
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -80,6 +82,65 @@ struct ContentView: View {
             })
             .navigationTitle("Deine Produkte")
         }
+        .environment(\.locale, Locale.init(identifier: "de"))
+    }
+    
+    func hasGroupMember(groupUUID: UUID) -> Bool {
+        var i = 0
+        for groupedProduct in groupedProducts {
+            if groupedProduct.groupUUID == groupUUID {
+                i += 1
+            }
+        }
+        
+        return i > 0
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+struct DetailGroupView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(sortDescriptors: [])
+    var products: FetchedResults<Products>
+    @FetchRequest(sortDescriptors: [])
+    var groups: FetchedResults<Groups>
+    @FetchRequest(sortDescriptors: [])
+    var groupedProducts: FetchedResults<GroupedProducts>
+    
+    var groupedProductUUID: UUID
+    var groupColor: String
+    var body: some View {
+        ForEach(products, id: \.self) { product in
+            if groupedProductUUID == product.uuid {
+                NavigationLink(value: product) {
+                    HStack {
+                        VStack {
+                            Image(systemName: product.icon!)
+                                .frame(width: 16, height: 16)
+                                .foregroundColor(.white)
+                                .padding(15)
+                                .background(ColorLibary().getColor(name: groupColor))
+                                .clipShape(Circle())
+                        }
+                        VStack(alignment: .leading) {
+                            Text(product.name!)
+                            Text("Hinzugefügt am " +  product.date!.formatted(.dateTime.month().day()))
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                        Spacer()
+                        Text("\(product.price)€")
+                            .bold()
+                    }
+                }
+            }
+        }
+        .onDelete(perform: deleteProduct)
     }
     
     /// Save the Context
@@ -99,12 +160,58 @@ struct ContentView: View {
             }.forEach(viewContext.delete)
             
             saveContext(viewContext: viewContext)
+            
+            if products.isEmpty {
+                removeNoCategoryGroup(viewContext: viewContext)
+            }
         }
+        deleteLinkedGroupedProductEntry()
+        
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    func deleteLinkedGroupedProductEntry() {
+        var groupedProductUUIDList = Array<UUID>()
+        var productUUIDList = Array<UUID>()
+        
+        var deletableGroupedUUIDs = Array<UUID>()
+        
+        for groupedProduct in groupedProducts {
+            groupedProductUUIDList.append(groupedProduct.productUUID!)
+        }
+        
+        for product in products {
+            productUUIDList.append(product.uuid!)
+        }
+        
+        for groupedProduct in groupedProductUUIDList {
+            if !productUUIDList.contains(groupedProduct) {
+                deletableGroupedUUIDs.append(groupedProduct)
+            }
+        }
+        
+        for groupedProduct in groupedProducts {
+            if deletableGroupedUUIDs.contains(groupedProduct.productUUID!) {
+                viewContext.delete(groupedProduct)
+            }
+            print("Hello World!")
+        }
+        
+        saveContext(viewContext: viewContext)
+        
+    }
+    
+    func removeNoCategoryGroup(viewContext: NSManagedObjectContext) {
+        
+        // Delete multiple objects
+        for group in groups {
+            viewContext.delete(group)
+        }
+        saveContext(viewContext: viewContext)
+        
+        for groupedProduct in groupedProducts {
+            viewContext.delete(groupedProduct)
+        }
+        
+        saveContext(viewContext: viewContext)
     }
 }

@@ -148,7 +148,12 @@ class StoreKitManager: ObservableObject {
     }
     
     func hasFinancyPro() -> Bool {
-        return !purchasedCourses.isEmpty
+        for purchases in purchasedCourses {
+            if purchases.displayName == "Financy Pro" {
+                return true
+            }
+        }
+        return false
     }
     
     //check if product has already been purchased
