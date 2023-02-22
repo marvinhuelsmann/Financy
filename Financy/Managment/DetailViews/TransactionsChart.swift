@@ -13,18 +13,33 @@ struct TransactionsChart: View {
     @FetchRequest(sortDescriptors: [])
     private var transactions: FetchedResults<Transactions>
     var productID: UUID
+    var productPrice: Int
+    
+    var showXYBarMark: Bool
     
     var body: some View {
         VStack {
             if !isTransactionIsEmpty() {
-                Chart(transactions ) { transaction in
-                    if transaction.productID == productID {
-                        BarMark(
-                            x: .value("Date", (transaction.date?.formatted(.dateTime.weekday(.wide)))!),
-                            y: .value("Price", transaction.money)
-                        )
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.orange, Color.purple]), startPoint: .top, endPoint: .bottom))
+                if showXYBarMark {
+                    Chart(transactions) { transaction in
+                        if transaction.productID == productID {
+                            BarMark(
+                                x: .value("Date", (transaction.date?.formatted(.dateTime.weekday(.wide)))!),
+                                y: .value("Price", transaction.money)
+                            )
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.purple, Color.orange, Color.purple]), startPoint: .top, endPoint: .bottom))
+                        }
                     }
+                } else {
+                    Chart(transactions) { transaction in
+                        if transaction.productID == productID {
+                            BarMark(
+                                x: .value("Price", transaction.money)
+                            )
+                            .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.green, Color.blue]), startPoint: .top, endPoint: .bottom))
+                        }
+                    }
+                    .chartXScale(domain: 0...productPrice)
                 }
             
             
@@ -53,12 +68,16 @@ struct TransactionsChart: View {
             }
         }
         
-        return i < 2
+        if !showXYBarMark {
+            return i == 0
+        } else {
+            return i < 2
+        }
     }
 }
 
 struct TransactionsChart_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionsChart(productID: UUID())
+        TransactionsChart(productID: UUID(), productPrice: 900, showXYBarMark: false)
     }
 }

@@ -39,4 +39,29 @@ struct TransactionHandler {
         
         saveContext(viewContext: viewContext)
     }
+    
+    func editTransaction(productID: UUID, reason: String, money: Int, date: Date, viewContext: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<Transactions>
+        fetchRequest = Transactions.fetchRequest()
+
+        fetchRequest.predicate = NSPredicate(
+            format: "productID == %@", productID as CVarArg
+        )
+        
+        let context = viewContext
+
+        // Perform the fetch request to get the objects
+        // matching the predicate
+        do {
+            let objects = try context.fetch(fetchRequest).first
+            
+            objects?.setValue(reason, forKey: "reason")
+            objects?.setValue(money, forKey: "money")
+            objects?.setValue(date, forKey: "date")
+            
+            saveContext(viewContext: viewContext)
+        } catch {
+            print("Found Error!")
+        }
+    }
 }

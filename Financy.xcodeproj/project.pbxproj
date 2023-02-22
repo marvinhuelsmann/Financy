@@ -38,6 +38,7 @@
 		4BF37BE22938063E000146CC /* TransactionsChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF37BE12938063E000146CC /* TransactionsChart.swift */; };
 		4BF42F2F29A565200075F37D /* ColorLibary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF42F2E29A565200075F37D /* ColorLibary.swift */; };
 		4BF42F3329A6A6D80075F37D /* Financy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF42F3229A6A6D80075F37D /* Financy.swift */; };
+		4BF42F3529A6C1A90075F37D /* EditTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF42F3429A6C1A90075F37D /* EditTransaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		4BF37BE12938063E000146CC /* TransactionsChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsChart.swift; sourceTree = "<group>"; };
 		4BF42F2E29A565200075F37D /* ColorLibary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLibary.swift; sourceTree = "<group>"; };
 		4BF42F3229A6A6D80075F37D /* Financy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Financy.swift; sourceTree = "<group>"; };
+		4BF42F3429A6C1A90075F37D /* EditTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			children = (
 				4BF37BE12938063E000146CC /* TransactionsChart.swift */,
 				4BE76E0B298721140086BEDA /* EditProduct.swift */,
+				4BF42F3429A6C1A90075F37D /* EditTransaction.swift */,
 				4BA83DD62989562C009AAA7D /* Groups */,
 			);
 			path = DetailViews;
@@ -451,6 +454,7 @@
 				4BE76E0A2986BEE40086BEDA /* SplashScreenFinacyPro.swift in Sources */,
 				4BEA120F2969FABB00438E38 /* SettingsView.swift in Sources */,
 				4BF37BD62936A758000146CC /* Persistence.swift in Sources */,
+				4BF42F3529A6C1A90075F37D /* EditTransaction.swift in Sources */,
 				4BF37BDC2937D522000146CC /* TransactionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

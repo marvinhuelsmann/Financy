@@ -9,9 +9,14 @@ import Foundation
 
 
 struct Financy {
-    private var version: String = "0.9.1"
+    private var version: String = "0.9.2"
+    private var betaVersion: Bool = true
     
     func getFinancyVersion() -> String {
         return version
+    }
+    
+    func isBetaVersion() -> Bool {
+        return betaVersion
     }
 }

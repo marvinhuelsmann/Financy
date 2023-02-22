@@ -19,6 +19,8 @@ struct SettingsView: View {
     @AppStorage("notifications") var allowNotifications = true
     @AppStorage("secureOnLogin") var requiredPasswordIdOnLogin = false
     
+    @AppStorage("XYBarMark") var showXYBarMark = false
+    
     @StateObject var storeKit = StoreKitManager()
     
     @State private var showFinancyProInformation = false

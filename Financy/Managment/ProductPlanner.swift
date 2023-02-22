@@ -111,16 +111,18 @@ struct TransactionDetailView: View {
             List {
                 ForEach(transactions, id: \.self) { transaction in
                     if transaction.productID == productID {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(transaction.reason!)
-                                    .bold()
-                                Text("\(transaction.date! > Date() ? "Planmäßig" : "Hinzugefügt") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
+                        NavigationLink(destination: EditTransaction(productID: transaction.productID!, money: String(transaction.money), reason: transaction.reason!, date: transaction.date!)) {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(transaction.reason!)
+                                        .bold()
+                                    Text("\(transaction.date! > Date() ? "Planmäßig" : "Hinzugefügt") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                                Text("\(transaction.money)€")
                             }
-                            Spacer()
-                            Text("\(transaction.money)€")
                         }
                     }
                 }
@@ -179,19 +181,21 @@ struct WeeklySpendDetailView: View {
     var darkMode: Bool
     var productAmount: Int
     var productID: UUID
+    
+    @State private var XYBarMarkState = SettingsView().showXYBarMark
+    
     var body: some View {
         VStack {
             VStack {
                 HStack {
-                    Text("Wochen Aktivität")
+                    Text(SettingsView().showXYBarMark ? "Wochen Aktivität" : "Insgesamte Aktivität")
                         .foregroundColor(!darkMode ? .black : .gray)
                         .font(.callout)
                         .fontWeight(.medium)
                     Spacer()
                 }
                 HStack {
-                    TransactionsChart(productID: productID)
-                    
+                    TransactionsChart(productID: productID, productPrice: productAmount, showXYBarMark: XYBarMarkState)
                 }
                 if trendingStatus() != "" {
                     HStack {
@@ -206,6 +210,12 @@ struct WeeklySpendDetailView: View {
             .padding(.leading, 5)
             .padding(9)
         }
+        .onTapGesture {
+            withAnimation(.linear) {
+                XYBarMarkState.toggle()
+                SettingsView().showXYBarMark.toggle()
+            }
+        }
         .frame(height: 150)
         .multilineTextAlignment(.leading)
         .background(!darkMode ? Color(UIColor.systemGroupedBackground) : Color(uiColor: .secondarySystemGroupedBackground))
@@ -213,15 +223,21 @@ struct WeeklySpendDetailView: View {
     }
     
     func trendingStatus() -> String {
-        if transactions.isEmpty {
+        var i = 0
+        for transaction in transactions {
+            if transaction.productID == productID {
+                i+=1
+            }
+        }
+        if i == 0 {
             return ""
         } else {
-            if transactions.count >= 8 {
+            if i >= 8 {
                 return "Hoher aufsteigender Trend"
-            } else if transactions.count >= 4 {
+            } else if i >= 5 {
+                return "Wachsender Trend"
+            } else if i >= 2 {
                 return "Aufsteigender Trend"
-            } else if transactions.count >= 2 {
-                return "Langsamer steigender Trend"
             }
         }
         return ""
