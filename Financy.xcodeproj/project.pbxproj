@@ -11,6 +11,7 @@
 		4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C729296B6E8000371740 /* BiometricType.swift */; };
 		4BA83DD529894E67009AAA7D /* EditGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA83DD429894E67009AAA7D /* EditGroup.swift */; };
 		4BA83DD829895646009AAA7D /* EditGroupDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA83DD729895646009AAA7D /* EditGroupDetail.swift */; };
+		4BCE640B29B39D4C001A94BD /* SplashScreenDetailProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCE640A29B39D4C001A94BD /* SplashScreenDetailProduct.swift */; };
 		4BE76E062985FC240086BEDA /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E052985FC240086BEDA /* StoreKitManager.swift */; };
 		4BE76E082986B7EF0086BEDA /* ProductList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BE76E072986B7EF0086BEDA /* ProductList.plist */; };
 		4BE76E0A2986BEE40086BEDA /* SplashScreenFinacyPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE76E092986BEE40086BEDA /* SplashScreenFinacyPro.swift */; };
@@ -78,6 +79,7 @@
 		4B61C729296B6E8000371740 /* BiometricType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricType.swift; sourceTree = "<group>"; };
 		4BA83DD429894E67009AAA7D /* EditGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroup.swift; sourceTree = "<group>"; };
 		4BA83DD729895646009AAA7D /* EditGroupDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDetail.swift; sourceTree = "<group>"; };
+		4BCE640A29B39D4C001A94BD /* SplashScreenDetailProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenDetailProduct.swift; sourceTree = "<group>"; };
 		4BE76E042985FBE10086BEDA /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
 		4BE76E052985FC240086BEDA /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		4BE76E072986B7EF0086BEDA /* ProductList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ProductList.plist; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				4BF37BA129368F6C000146CC /* FinancyApp.swift */,
 				4BEA120B2969FA2800438E38 /* SplashScreen.swift */,
 				4BE76E092986BEE40086BEDA /* SplashScreenFinacyPro.swift */,
+				4BCE640A29B39D4C001A94BD /* SplashScreenDetailProduct.swift */,
 				4BF37BCB29368F99000146CC /* Managment */,
 				4BF37BA329368F6C000146CC /* ContentView.swift */,
 				4BF37BA529368F6E000146CC /* Assets.xcassets */,
@@ -386,6 +389,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 4BF37B9529368F6C000146CC;
 			productRefGroup = 4BF37B9F29368F6C000146CC /* Products */;
@@ -450,6 +454,7 @@
 				4BF42F3329A6A6D80075F37D /* Financy.swift in Sources */,
 				4BF37BDE2937D7DD000146CC /* CreateTransaction.swift in Sources */,
 				4BE76E062985FC240086BEDA /* StoreKitManager.swift in Sources */,
+				4BCE640B29B39D4C001A94BD /* SplashScreenDetailProduct.swift in Sources */,
 				4BE76E12298849540086BEDA /* ChangeGroup.swift in Sources */,
 				4BE76E0A2986BEE40086BEDA /* SplashScreenFinacyPro.swift in Sources */,
 				4BEA120F2969FABB00438E38 /* SettingsView.swift in Sources */,

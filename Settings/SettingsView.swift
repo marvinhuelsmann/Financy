@@ -8,6 +8,7 @@
 import SwiftUI
 import AuthenticationServices
 import StoreKit
+import LocalAuthentication
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) var viewContext
@@ -20,16 +21,21 @@ struct SettingsView: View {
     @AppStorage("secureOnLogin") var requiredPasswordIdOnLogin = false
     
     @AppStorage("XYBarMark") var showXYBarMark = false
+    @AppStorage("productDetailInformation") var productDetailScreen = false
     
     @StateObject var storeKit = StoreKitManager()
     
     @State private var showFinancyProInformation = false
+    @State private var isInAuth = false
     
     var body: some View {
         VStack {
             Form {
                 Section(header: Text("Allgemein"), footer: Text("Aktiviere \(getBiometricTypeName()) um beim öffnen der App zu aktivieren. Achtung: Fallst du dich nicht mehr identifizieren kannst gehen die Daten verloren!")) {
                     Toggle(getBiometricTypeName(), isOn: $requiredPasswordIdOnLogin)
+                        .onTapGesture {
+                            authenticate()
+                        }
                 }
                 
                 Section(header: Text("Ermutigungen"), footer: Text("Erhalte Erinnerungen wenn du dein Produkt Ziel fast erreicht hast.")) {
@@ -76,7 +82,33 @@ struct SettingsView: View {
         .sheet(isPresented: $showFinancyProInformation, content: {
             SplashScreenFinancyPro()
         })
+        .blur(radius: !self.isInAuth ? 0 : 2)
     }
+    
+    func authenticate() {
+            isInAuth = true
+            let context = LAContext()
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) || context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+                let reason = "Um Zugriff auf deine Geldeingänge und Produkte zu haben."
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                    DispatchQueue.main.async {
+                        if success {
+                            isInAuth = false
+                        } else {
+                            isInAuth = false
+                            requiredPasswordIdOnLogin.toggle()
+                        }
+                    }
+                }
+            } else {
+                isInAuth = false
+                requiredPasswordIdOnLogin.toggle()
+            }
+    }
+    
 }
 
 struct CourseItem: View {

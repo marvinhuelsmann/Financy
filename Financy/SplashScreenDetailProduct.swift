@@ -1,23 +1,23 @@
 //
-//  SplashScreenFinacyPro.swift
+//  SplashScreenDetailProduct.swift
 //  Financy
 //
-//  Created by Marvin Hülsmann on 29.01.23.
+//  Created by Marvin Hülsmann on 04.03.23.
 //
 
 import SwiftUI
 import StoreKit
 
-struct SplashScreenFinancyPro: View {
+struct SplashScreenDetailProduct: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+    var productName: String
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
         
-                TitleFinancyView()
+                TitleProductView()
                 
-                InformationFinancyContainerView()
+                InformationProductContainerView()
                 
                 Spacer(minLength: 30)
                 
@@ -27,12 +27,12 @@ struct SplashScreenFinancyPro: View {
                     
                     mode.wrappedValue.dismiss()
                 }) {
-                    Text("Durchstarten")
+                    Text(productName + " ansehen")
                         .customButton()
                 }
                 .padding(.horizontal)
                 
-                Text("Erhalte beim ersten Kauf von Financy Pro eine Probe Version von 3 Tagen.")
+                Text("Manche Funktionen sind nur mit Financy Pro verfügbar*")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -48,43 +48,39 @@ struct SplashScreenFinancyPro: View {
 }
 
 
-struct TitleFinancyView: View {
+struct TitleProductView: View {
     var body: some View {
         VStack {
-            Text("Durchstarten mit")
+            Text("Hilfe zu den")
                 .customTitleText()
             
             HStack {
-                Text("Financy")
+                Text("Funktionen")
                     .customTitleText()
                     .foregroundColor(.mainColor)
-                Text("Pro")
-                    .fontWeight(.heavy)
-                    .font(.system(size: 40))
-
-                    .foregroundColor(.accentColor)
             }
         }
     }
 }
 
 
-struct InformationFinancyContainerView: View {
+struct InformationProductContainerView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            InformationDetailView(title: "Bearbeiten", subTitle: "Bearbeite deine Produkte, um anpassungsfähig auf Produkt Veränderungen zu sein.", imageName: "pencil")
+            InformationDetailView(title: "Drücken", subTitle: "Drücke auf die Statistik, um weitere Details einzusehen.", imageName: "hand.point.up.left")
             
-            InformationDetailView(title: "Teilen & Zusammenarbeit", subTitle: "Teile deine Produkte mit anderen oder spare mit Familienmitglieder zusammen.", imageName: "square.and.arrow.up")
+            InformationDetailView(title: "Änderungen", subTitle: "Auf den drei Punkten in der oberen rechten Ecke kannst du dein Produkt bearbeiten und Geld hinzufügen.", imageName: "plus.app")
             
-            InformationDetailView(title: "Mehr Produkte", subTitle: "Füge unendlich viele Produkte hinzu die du tracken möchtest und lasse dich nicht aufhalten!", imageName: "chart.bar.doc.horizontal.fill")
+            InformationDetailView(title: "Statistiken", subTitle: "Im unteren Bereich der Ansicht, siehst du deine Transaktionen, diese kannst du bearbeiten oder löschen.", imageName: "chart.pie")
         }
         .padding(.horizontal)
     }
 }
 
-struct SplashScreenFinancyPro_Previews: PreviewProvider {
+struct SplashScreenDetailProduct_Previews: PreviewProvider {
     static var previews: some View {
         SplashScreenFinancyPro()
     }
 }
+
 

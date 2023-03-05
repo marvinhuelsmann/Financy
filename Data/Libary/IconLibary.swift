@@ -14,7 +14,7 @@ struct IconLibary {
     ]
     
     var avaibleGroupIcons = [
-        "paperplane", "doc", "bolt", "camera", "car", "airplane.departure", "ferry", "scooter", "fuelpump", "house.lodge", "tent.2", "ipad.gen2", "lamp.desk", "popcorn", "chair", "gamecontroller", "carrot", "dollarsign.square", "facemask", "iphone", "shower", "sink",  "tray.2",  "dollarsign.square"
+        "paperplane", "doc", "bolt", "camera", "car", "airplane.departure", "ferry", "scooter", "fuelpump", "house.lodge", "tent.2", "ipad.gen2", "lamp.desk", "popcorn", "chair", "gamecontroller", "carrot", "dollarsign.square", "facemask", "iphone", "shower", "sink",  "tray.2",  "dollarsign.square", "xmark"
     ]
     
     func getAvaibleProductIcons() -> Array<String> {

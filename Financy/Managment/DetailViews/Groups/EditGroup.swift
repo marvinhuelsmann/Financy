@@ -10,6 +10,7 @@ import CoreData
 
 struct EditGroup: View {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @FetchRequest(sortDescriptors: [])
     var products: FetchedResults<Products>
     @FetchRequest(sortDescriptors: [])
@@ -17,10 +18,8 @@ struct EditGroup: View {
     @FetchRequest(sortDescriptors: [])
     var groupedProducts: FetchedResults<GroupedProducts>
     
-    @State private var path: [Products] = []
     
     var body: some View {
-        NavigationStack(path: $path) {
             VStack {
                 if !isGroupEmpty() {
                     List {
@@ -48,9 +47,7 @@ struct EditGroup: View {
                         }
                         .onDelete(perform: deleteGroup)
                     }
-                    .navigationDestination(for: Products.self) { product in
-                        ProductPlanner(productID: product.uuid!, productName: product.name!, productAmount: Int(product.price), productIcon: product.icon!)
-                    }
+                    
                 } else {
                     VStack {
                         Spacer()
@@ -76,7 +73,6 @@ struct EditGroup: View {
                 }
             })
             .navigationTitle("Deine Gruppen")
-        }
     }
     
     func isGroupEmpty() -> Bool {

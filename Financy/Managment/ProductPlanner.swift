@@ -23,6 +23,8 @@ struct ProductPlanner: View {
     @FetchRequest(sortDescriptors: [])
     var groupedProducts: FetchedResults<GroupedProducts>
     
+    @State private var showInformationView = !SettingsView().productDetailScreen
+    
     var body: some View {
         VStack {
             HStack {
@@ -72,6 +74,11 @@ struct ProductPlanner: View {
                 }
             }
         })
+        .sheet(isPresented: $showInformationView, content: {
+            SplashScreenDetailProduct(productName: productName)
+        }).onAppear(perform: {
+            SettingsView().productDetailScreen = true
+        })
         .navigationTitle(productName)
     }
     
@@ -106,41 +113,43 @@ struct TransactionDetailView: View {
     var productID: UUID
     var darkMode: Bool
     
+    @State private var path: [Transactions] = []
+    
     var body: some View {
-        if !isTransactionIsEmpty() {
-            List {
-                ForEach(transactions, id: \.self) { transaction in
-                    if transaction.productID == productID {
-                        NavigationLink(destination: EditTransaction(productID: transaction.productID!, money: String(transaction.money), reason: transaction.reason!, date: transaction.date!)) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(transaction.reason!)
-                                        .bold()
-                                    Text("\(transaction.date! > Date() ? "Planmäßig" : "Hinzugefügt") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
+            if !isTransactionIsEmpty() {
+                List {
+                    ForEach(transactions, id: \.self) { transaction in
+                        if transaction.productID == productID {
+                            NavigationLink(destination: EditTransaction(productID: transaction.productID!, money: String(transaction.money), reason: transaction.reason!, date: transaction.date!)) {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(transaction.reason!)
+                                            .bold()
+                                        Text("\(transaction.date! > Date() ? "Planmäßig" : "Hinzugefügt") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                    Spacer()
+                                    Text("\(transaction.money)€")
                                 }
-                                Spacer()
-                                Text("\(transaction.money)€")
                             }
                         }
                     }
+                    .onDelete(perform: deleteProduct)
                 }
-                .onDelete(perform: deleteProduct)
+                .environment(\.locale, Locale.init(identifier: "de"))
+                .cornerRadius(15)
+                .padding(10)
+            } else {
+                Spacer()
+                VStack {
+                    Image(systemName: "nosign.app")
+                        .font(.system(size: 80))
+                    Text("Fehlende Daten")
+                        .font(.largeTitle)
+                        .bold()
+                }.padding(.bottom, 40)
             }
-            .environment(\.locale, Locale.init(identifier: "de"))
-            .cornerRadius(15)
-            .padding(10)
-        } else {
-            Spacer()
-            VStack {
-                Image(systemName: "nosign.app")
-                    .font(.system(size: 80))
-                Text("Fehlende Daten")
-                    .font(.largeTitle)
-                    .bold()
-            }.padding(.bottom, 40)
-        }
     }
     
     func isTransactionIsEmpty() -> Bool {
