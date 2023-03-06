@@ -114,7 +114,7 @@ struct CreateProduct: View {
             createProduct(name: name, price: Int64(price)!, icon: iconName, viewContext: viewContext)
             mode.wrappedValue.dismiss()
         } else {
-            
+            enoughProducts = true
         }
     }
     
@@ -136,6 +136,9 @@ struct CreateProduct: View {
         newProduct.icon = icon
         
         saveContext(viewContext: viewContext)
+        
+        NotificationHandler().sendNotificationRaw(title: newProduct.name! + " fehlen Gelder!", body: "Es werden mehr Transaktionen um dein Ziel von \(newProduct.price.formatted())Є zu erreichen!", launchIn: (60 * 6) * Int.random(in: 3..<20))
+        
     }
     
     /// Save the Context

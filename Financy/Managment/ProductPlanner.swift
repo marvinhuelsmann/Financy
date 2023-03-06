@@ -363,7 +363,7 @@ struct AllSpendAmountDetailView: View {
                     Spacer()
                 }
                 HStack {
-                    Text(String(getAlreadySpendAmount()) + "€")
+                    Text("\(getAlreadySpendAmount())€")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(!isPriceReached() ? (isNearOnTheReachedPrice() ? .yellow : !darkMode ? .white : .black) : .green)
@@ -373,7 +373,7 @@ struct AllSpendAmountDetailView: View {
                     Text("Dein Ziel:")
                         .font(.subheadline)
                         .foregroundColor(Color(UIColor.lightGray))
-                    Text(String(productAmount) + "€" )
+                    Text("\(productAmount)€" )
                         .foregroundColor(Color(UIColor.lightGray))
                         .font(.subheadline)
                         .bold()
