@@ -125,7 +125,7 @@ struct TransactionDetailView: View {
                                     VStack(alignment: .leading) {
                                         Text(transaction.reason!)
                                             .bold()
-                                        Text("\(transaction.date! > Date() ? "Planmäßig" : "Hinzugefügt") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
+                                        Text("\(isSameDay(date1: transaction.date!, date2: Date()) ? "Hinzugefügt" : transaction.date! > Date() ? "Planmäßig" : "Hinzugefügt") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
                                     }
@@ -150,6 +150,15 @@ struct TransactionDetailView: View {
                         .bold()
                 }.padding(.bottom, 40)
             }
+    }
+    
+    func isSameDay(date1: Date, date2: Date) -> Bool {
+        let diff = Calendar.current.dateComponents([.day], from: date1, to: date2)
+        if diff.day == 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     func isTransactionIsEmpty() -> Bool {

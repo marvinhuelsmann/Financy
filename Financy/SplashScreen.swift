@@ -10,6 +10,8 @@ import SwiftUI
 struct SplashScreen: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @State private var notificationHandler = NotificationHandler()
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {

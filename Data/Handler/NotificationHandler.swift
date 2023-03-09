@@ -17,8 +17,10 @@ class NotificationHandler: ObservableObject {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if granted == true && error == nil {
                 print("Notifications permitted")
+                SettingsView().allowNotifications = true
             } else {
                 print("Notifications not permitted")
+                SettingsView().allowNotifications = false
             }
         }
     }
@@ -44,18 +46,20 @@ class NotificationHandler: ObservableObject {
     ///   - body: Notification body
     ///   - launchIn: Notification will be launched on this date
     func sendNotificationRaw(title: String, body: String, launchIn: Int) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-        content.sound = UNNotificationSound.default
-
-        // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(launchIn), repeats: false)
-
-        // choose a random identifier
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-        // add our notification request
-        UNUserNotificationCenter.current().add(request)
+        if SettingsView().allowNotifications {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.body = body
+            content.sound = UNNotificationSound.default
+            
+            // show this notification five seconds from now
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(launchIn), repeats: false)
+            
+            // choose a random identifier
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            
+            // add our notification request
+            UNUserNotificationCenter.current().add(request)
+        }
     }
 }

@@ -38,7 +38,7 @@ struct SettingsView: View {
                         }
                 }
                 
-                Section(header: Text("Ermutigungen"), footer: Text("Erhalte Erinnerungen wenn du dein Produkt Ziel fast erreicht hast.")) {
+                Section(header: Text("Ermutigungen"), footer: Text("Erhalte Erinnerungen wenn du z.B dein Produkt Ziel fast erreicht hast.")) {
                     Toggle("Benachrichtigung", isOn: $allowNotifications)
                 }
                 
