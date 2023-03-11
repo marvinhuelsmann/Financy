@@ -25,7 +25,7 @@ struct CreateTransaction: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Wie viel Geld hast du bekommen?")) {
+                Section(header: Text("createtransaction.money")) {
                     TextField("10€", text: $money)
                         .keyboardType(.numberPad)
                         .onReceive(Just(money)) { newValue in
@@ -36,24 +36,23 @@ struct CreateTransaction: View {
                         }
                 }
                 
-                Section(header: Text("Beschreibung")) {
-                    TextField("Von Mama", text: $reason)
+                Section(header: Text("createtransaction.info")) {
+                    TextField("createtransaction.info.detail", text: $reason)
                 }
                 
-                Section(header: Text("Wann soll das Geld eingezahlt werden?")) {
+                Section(header: Text("createtransaction.time")) {
                     DatePicker(selection: $date, displayedComponents: .date, label: {
                         VStack {
-                            Text("Zeitpunkt")
+                            Text("createtransaction.time.detail")
                         }
                     })
-                    .environment(\.locale, Locale.init(identifier: "de"))
                 }
                 
                 
                 Section {
                     HStack(alignment: .center) {
                         Spacer()
-                        Button("Transaktion hinzufügen") {
+                        Button("createtransaction.add") {
                             if money != "" && reason != "" {
                                 makeTransaction()
                             } else {
@@ -68,7 +67,7 @@ struct CreateTransaction: View {
                 if !hasFillForm {
                     HStack {
                         Spacer()
-                        Text("Es wurden nicht alle benötigten Felder ausgefüllt!")
+                        Text("form.fillnotall")
                             .bold()
                             .multilineTextAlignment(.center)
                         Spacer()
@@ -77,7 +76,7 @@ struct CreateTransaction: View {
                 }
             }
         }
-        .navigationTitle("Geld hinzufügen")
+        .navigationTitle("createtransaction.navigationTitle")
     }
     
     func makeTransaction() {

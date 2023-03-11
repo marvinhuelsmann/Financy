@@ -24,7 +24,7 @@ struct EditProduct: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Produkt Icon*")) {
+                Section(header: Text("newproduct.icon")) {
                     Picker("Icon", selection: $productIcon) {
                         ForEach(avaibleIcons, id: \.self) { icon in
                             Image(systemName: icon)
@@ -34,11 +34,11 @@ struct EditProduct: View {
                     .frame(height: 100)
                 }
                 
-                Section(header: Text("Produkt Name*")) {
+                Section(header: Text("newproduct.name")) {
                     TextField("iPhone 14 Pro", text: $productName)
                 }
                 
-                Section(header: Text("Preis")) {
+                Section(header: Text("newproduct.price")) {
                     TextField("1299", text: $productPrice)
                         .keyboardType(.numberPad)
                         .onReceive(Just(productPrice)) { newValue in
@@ -52,7 +52,7 @@ struct EditProduct: View {
                 Section {
                     HStack(alignment: .center) {
                         Spacer()
-                        Button("Produkt bearbeiten") {
+                        Button("editproduct.edit") {
                             if productName != "" {
                                 editProduct()
                             } else {
@@ -67,7 +67,7 @@ struct EditProduct: View {
                 if !hasFillForm {
                     HStack {
                         Spacer()
-                        Text("Es wurden nicht alle benötigten Felder ausgefüllt!")
+                        Text("form.fillnotall")
                             .bold()
                             .multilineTextAlignment(.center)
                         Spacer()
@@ -76,7 +76,7 @@ struct EditProduct: View {
                 }
             }
         }
-        .navigationTitle("Produkt speichern")
+        .navigationTitle("editproduct.navigationTitle")
     }
     
     func editProduct() {

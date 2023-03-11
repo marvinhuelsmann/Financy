@@ -24,8 +24,8 @@ struct ChangeGroup: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Produktgruppen")) {
-                    Picker("Gruppe", selection: $groupName) {
+                Section(header: Text("editgroup.groups")) {
+                    Picker("editgroup.group", selection: $groupName) {
                         ForEach(groups, id: \.self) { (group: Groups) in
                             Text(group.name!).tag(Optional(group))
                         }
@@ -36,7 +36,7 @@ struct ChangeGroup: View {
                 Section {
                     HStack(alignment: .center) {
                         Spacer()
-                        Button("Gruppe ändern") {
+                        Button("editgroup.changegroup") {
                             if selected?.name != "" {
                                 createGroupedProduct()
                             }
@@ -47,7 +47,7 @@ struct ChangeGroup: View {
                     .cornerRadius(5)
                 }
             }
-            .navigationTitle("Gruppe bearbeiten")
+            .navigationTitle("editgroup.navigationTitle")
         }
     }
     

@@ -27,12 +27,12 @@ struct SplashScreenFinancyPro: View {
                     
                     mode.wrappedValue.dismiss()
                 }) {
-                    Text("Durchstarten")
+                    Text("splashscreen.financy.start")
                         .customButton()
                 }
                 .padding(.horizontal)
                 
-                Text("Erhalte beim ersten Kauf von Financy Pro eine Probe Version von 3 Tagen.")
+                Text("splashscreen.financy.footer")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -51,7 +51,7 @@ struct SplashScreenFinancyPro: View {
 struct TitleFinancyView: View {
     var body: some View {
         VStack {
-            Text("Durchstarten mit")
+            Text("splashscreen.financy.welcome")
                 .customTitleText()
             
             HStack {
@@ -72,11 +72,11 @@ struct TitleFinancyView: View {
 struct InformationFinancyContainerView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            InformationDetailView(title: "Bearbeiten", subTitle: "Bearbeite deine Produkte, um anpassungsfähig auf Produkt Veränderungen zu sein.", imageName: "pencil")
+            InformationDetailView(title: "splashscreen.financy.info.edit.title", subTitle: "splashscreen.financy.info.edit.subTitle", imageName: "pencil")
             
-            InformationDetailView(title: "Teilen & Zusammenarbeit", subTitle: "Teile deine Produkte mit anderen oder spare mit Familienmitglieder zusammen.", imageName: "square.and.arrow.up")
+            InformationDetailView(title: "splashscreen.financy.info.share.title", subTitle: "splashscreen.financy.info.share.subTitle", imageName: "square.and.arrow.up")
             
-            InformationDetailView(title: "Mehr Produkte", subTitle: "Füge unendlich viele Produkte hinzu die du tracken möchtest und lasse dich nicht aufhalten!", imageName: "chart.bar.doc.horizontal.fill")
+            InformationDetailView(title: "splashscreen.financy.info.products.title", subTitle: "splashscreen.financy.info.products.subTitle", imageName: "chart.bar.doc.horizontal.fill")
         }
         .padding(.horizontal)
     }

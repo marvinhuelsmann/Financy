@@ -37,7 +37,7 @@ struct EditGroup: View {
                                         }
                                         VStack(alignment: .leading) {
                                             Text(group.name!)
-                                            Text("Hinzugefügt am " +  group.date!.formatted(.dateTime.month().day()))
+                                            Text("product.added \(group.date!.formatted(.dateTime.month().day()))")
                                                 .font(.subheadline)
                                                 .foregroundColor(.gray)
                                         }
@@ -54,7 +54,7 @@ struct EditGroup: View {
                         VStack {
                             Image(systemName: "rectangle.3.group")
                                 .font(.system(size: 60))
-                            Text("Keine Gruppen")
+                            Text("groups.empty")
                                 .bold()
                                 .font(.largeTitle)
                         }.padding(.bottom, 50)
@@ -72,7 +72,7 @@ struct EditGroup: View {
                         .disabled(products.isEmpty)
                 }
             })
-            .navigationTitle("Deine Gruppen")
+            .navigationTitle("groups.navigationTitle")
     }
     
     func isGroupEmpty() -> Bool {

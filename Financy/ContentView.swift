@@ -36,7 +36,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .environment(\.locale, Locale.init(identifier: "de"))
                     .navigationDestination(for: Products.self) { product in
                         ProductPlanner(productID: product.uuid!, productName: product.name!, productAmount: Int(product.price), productIcon: product.icon!)
                     }
@@ -46,7 +45,7 @@ struct ContentView: View {
                         VStack {
                             Image(systemName: "backpack")
                                 .font(.system(size: 60))
-                            Text("Keine Produkte")
+                            Text("products.empty")
                                 .bold()
                                 .font(.largeTitle)
                         }.padding(.bottom, 50)
@@ -59,12 +58,12 @@ struct ContentView: View {
                     Menu {
                         NavigationLink(destination: CreateProduct()) {
                             HStack {
-                                Text("Neues Produkt")
+                                Text("products.new")
                                 Image(systemName: "plus")
                             }
                         }
                         NavigationLink(destination: EditGroup()) {
-                            Text("Gruppen bearbeiten")
+                            Text("products.editgroup")
                             Image(systemName: "rectangle.3.group")
                         }
                         .disabled(products.isEmpty)
@@ -75,14 +74,13 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink(destination: SettingsView()) {
                         HStack {
-                            Text("Einstellungen")
+                            Text("settings.navigationTitle")
                         }
                     }
                 }
             })
-            .navigationTitle("Deine Produkte")
+            .navigationTitle("products.navigationTitle")
         }
-        .environment(\.locale, Locale.init(identifier: "de"))
     }
     
     func hasGroupMember(groupUUID: UUID) -> Bool {
@@ -129,12 +127,12 @@ struct DetailGroupView: View {
                         }
                         VStack(alignment: .leading) {
                             Text(product.name!)
-                            Text("Hinzugefügt am " +  product.date!.formatted(.dateTime.month().day()))
+                            Text("products.detail.added \(product.date!.formatted(.dateTime.month().day()))")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
                         Spacer()
-                        Text("\(product.price)€")
+                        Text("\(product.price)\(CurrencyLibary().getSpecificIcon())")
                             .bold()
                     }
                 }
@@ -193,7 +191,6 @@ struct DetailGroupView: View {
             if deletableGroupedUUIDs.contains(groupedProduct.productUUID!) {
                 viewContext.delete(groupedProduct)
             }
-            print("Hello World!")
         }
         
         saveContext(viewContext: viewContext)

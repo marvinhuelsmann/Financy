@@ -1,0 +1,216 @@
+/* 
+  Localizable.strings
+  Financy
+
+  Created by Marvin Hülsmann on 10.03.23.
+  
+*/
+
+"group.notgrouped" = "Not grouped";
+"form.fillnotall" = "Not all required fields have been filled in!";
+
+"color" = "Color";
+
+"color.red" = "Red";
+"color.green" = "Green";
+"color.grey" = "Grey";
+"color.purple" = "Purple";
+"color.blue" = "Blue";
+"color.turquoise" = "Turquoise";
+"color.brown" = "Brown";
+"color.yellow" = "Yellow";
+"color.mint" = "Mint";
+
+"currency.euro" = "Euro";
+"currency.pounds" = "Pound";
+"currency.dollar" = "Dollar";
+
+"currency.name" = "Currency";
+
+
+/* SplashScreen.swift */
+"splashscreen.start" = "Here we go";
+"splashscreen.footer" = "Add your first product and track it to better sort incoming payments and keep track of them.";
+
+"splashscreen.welcome" = "Welcome at";
+
+"splashscreen.info.plan.title" = "Plan";
+"splashscreen.info.plan.subTitle" = "Plan when you can afford a product and when is a good purchase date!";
+
+"splashscreen.info.notify.title" = "Notifications";
+"splashscreen.info.notify.subTitle" = "If you wish, Financy will remind you of your current product goals.";
+
+"splashscreen.info.privacy.title" = "Privacy";
+"splashscreen.info.privacy.subTitle" = "Finance does not share data in clouds. They remain stored solely on your device.";
+
+
+
+/* SplashScreenFinancyPro */
+"splashscreen.financy.start" = "Take off";
+"splashscreen.financy.footer" = "Get a 3-day trial with your first purchase of Financy Pro.";
+
+"splashscreen.financy.welcome" = "Take off with";
+
+"splashscreen.financy.info.edit.title" = "Edit";
+"splashscreen.financy.info.edit.subTitle" = "Edit your products to be adaptable to product changes.";
+
+"splashscreen.financy.info.share.title" = "Sharing & Collaboration";
+"splashscreen.financy.info.share.subTitle" = "Share your products with others or save with family members.";
+
+"splashscreen.financy.info.products.title" = "More products";
+"splashscreen.financy.info.products.subTitle" = "Add an infinite number of products that you want to track and don't let them stop you!";
+
+
+
+/* SplashScreenDetailProduct.swift */
+"splashscreen.product.start %@" = "View %@";
+"splashscreen.product.footer" = "Some features are only available with Financy Pro*.";
+
+"splashscreen.product.welcome.title" = "FAQ for the";
+"splashscreen.product.welcome.footer" = "functions";
+
+"splashscreen.product.info.touch.title" = "Press";
+"splashscreen.product.info.touch.subTitle" = "Click on the stats to see more details.";
+
+"splashscreen.product.info.edit.title" = "Changes";
+"splashscreen.product.info.edit.subTitle" = "On the three dots in the top right corner you can edit your product and add money.";
+
+"splashscreen.product.info.statistics.title" = "Statistics";
+"splashscreen.product.info.statistics.subTitle" = "In the lower part of the view, you see your transactions, you can edit or delete them.";
+
+
+
+/* TransactionChart.swift */
+"transaction.noinfo" = "No balance";
+"transaction.nodata" = "Too little data collected";
+
+
+
+/* ContentView.swift */
+"products.navigationTitle" = "Your products";
+"products.empty" = "Empty products";
+"products.new" = "New product";
+"products.editgroup" = "Edit group";
+
+"products.detail.added %@" = "Added on %@";
+
+
+
+/* ProductPlaner.swift */
+"product.transaction" = "Transactions";
+"product.addmoney" = "Add money";
+"product.editproduct" = "Edit product";
+"product.emptydata" = "Missing data";
+
+"product.activity.weekly" = "Weekly activity";
+"product.activity.alltime" = "All-Time acitivity";
+
+"product.trends.high" = "High rising trend";
+"producet.trends.middle" = "Growing trend";
+"product.trends.lowest" = "Rising trend";
+
+"product.buylater.header" = "Buy in 30 days?";
+"product.buylater.ready" = "Ready!";
+"product.buylater.notready" = "No!";
+"product.buylater.footer %lld %@" = "+%lld%@ in 30 days.";
+
+"product.average.header" = "Current balance";
+"product.average.footer" = "Your target:";
+
+"product.added %@" = "Added on %@";
+"product.sheduledadded %@" = "Scheduled on %@";
+
+
+
+/* EditGroup.swift */
+"groups.navigationTitle" = "Your groups";
+"groups.empty" = "Empty groups";
+
+
+
+/* EditGroup.swift */
+"editgroup.navigationTitle" = "Edit group";
+"editgroup.changegroup" = "Change group";
+"editgroup.groups" = "product groups";
+"editgroup.group" = "Group";
+
+
+
+/* CreateGroup.swift */
+"creategroup.navigationTitle" = "New group";
+"creategroup.add" = "Add group";
+
+"creategroup.alert" = "Note: To see your group it needs at least one product, you can change the product groups in the product settings";
+
+"creategroup.name" = "Group name*";
+"creategroup.color" = "Group color*";
+"creategroup.icon" = "Group icon*";
+
+
+
+/* CreateTransaction.swift */
+"createtransaction.navigationTitle" = "Add money";
+"createtransaction.add" = "Add transaction";
+
+"createtransaction.money" = "How much money did you get?";
+
+"createtransaction.info" = "Description";
+"createtransaction.info.detail" = "From Dad";
+
+"createtransaction.time" = "When should the money be deposited?";
+"createtransaction.time.detail" = "Time";
+
+
+
+/* EditTransaction.swift */
+"edittransaction.navigationTitle" = "Edit";
+"edittransaction.edit" = "Edit transaction";
+
+
+
+/* CreateProduct.swift */
+"newproduct.navigationTitle" = "New product";
+
+"newproduct.addproduct" = "Add product";
+
+"newproduct.price" = "Price*";
+"newproduct.name" = "Product name*";
+"newproduct.icon" = "Product icon*";
+
+"newproduct.notify.title %@" = "%@ missing funds!";
+"newproduct.notify.body %lld" = "There will be more transactions to reach your goal of %lld!";
+
+
+"newproduct.limit" = "You have already reached your limit of products, buy Sparky Pro to be able to add more products!";
+
+
+
+/* EditProduct.swift */
+"editproduct.navigationTitle" = "Save product";
+"editproduct.edit" = "Edit product";
+
+
+
+/* SettingsView.swift */
+"settings.navigationTitle" = "Settings";
+
+"settings.auth.header" = "General";
+"settings.auth.footer %@" = "Activate %@ um beim öffnen der App zu aktivieren. Achtung: Fallst du dich nicht mehr identifizieren kannst gehen die Daten verloren!";
+
+"settings.notify.header" = "Encouragements";
+"settings.notify.footer" = "Receive reminders when you have almost reached your product goal, for example.";
+"settings.notify.button" = "Notifications";
+
+"settings.products.header" = "Products";
+"settings.products.footer" = "With the purchase of a product you support Financy and its developer.";
+
+"settings.currency.footer" = "Choose your favorite display currency";
+
+"settings.financypro.button" = "Benefits of Finance Pro";
+"settings.products.reestablished" = "Restore purchases";
+
+"settings.version.header %@" = "Financy %@ © All rights reserved - 2023";
+"settings.version.footer" = "Developed by Marvin Hülsmann in Germany. Bugs or ideas can be submitted on Twitter (@marvhuelsmann).";
+
+"settings.alert.title" = "Warning!";
+"settings.alert.message" = "This change requires an app restart until all currencies are fully changed!";

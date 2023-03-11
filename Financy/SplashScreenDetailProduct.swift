@@ -27,12 +27,12 @@ struct SplashScreenDetailProduct: View {
                     
                     mode.wrappedValue.dismiss()
                 }) {
-                    Text(productName + " ansehen")
+                    Text("splashscreen.product.start \(productName)")
                         .customButton()
                 }
                 .padding(.horizontal)
                 
-                Text("Manche Funktionen sind nur mit Financy Pro verfügbar*")
+                Text("splashscreen.product.footer")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -51,11 +51,11 @@ struct SplashScreenDetailProduct: View {
 struct TitleProductView: View {
     var body: some View {
         VStack {
-            Text("Hilfe zu den")
+            Text("splashscreen.product.welcome.title")
                 .customTitleText()
             
             HStack {
-                Text("Funktionen")
+                Text("splashscreen.product.welcome.footer")
                     .customTitleText()
                     .foregroundColor(.mainColor)
             }
@@ -67,11 +67,11 @@ struct TitleProductView: View {
 struct InformationProductContainerView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            InformationDetailView(title: "Drücken", subTitle: "Drücke auf die Statistik, um weitere Details einzusehen.", imageName: "hand.point.up.left")
+            InformationDetailView(title: "splashscreen.product.info.touch.title", subTitle: "splashscreen.product.info.touch.subTitle", imageName: "hand.point.up.left")
             
-            InformationDetailView(title: "Änderungen", subTitle: "Auf den drei Punkten in der oberen rechten Ecke kannst du dein Produkt bearbeiten und Geld hinzufügen.", imageName: "plus.app")
+            InformationDetailView(title: "splashscreen.product.info.edit.title", subTitle: "splashscreen.product.info.edit.subTitle", imageName: "plus.app")
             
-            InformationDetailView(title: "Statistiken", subTitle: "Im unteren Bereich der Ansicht, siehst du deine Transaktionen, diese kannst du bearbeiten oder löschen.", imageName: "chart.pie")
+            InformationDetailView(title: "splashscreen.product.info.statistics.title", subTitle: "splashscreen.product.info.statistics.subTitle", imageName: "chart.pie")
         }
         .padding(.horizontal)
     }

@@ -23,7 +23,11 @@ struct SettingsView: View {
     @AppStorage("XYBarMark") var showXYBarMark = false
     @AppStorage("productDetailInformation") var productDetailScreen = false
     
+    @AppStorage("currency") var currency = "currency.euro"
+    @State private var showingAppRestartAlert = false
+    
     @StateObject var storeKit = StoreKitManager()
+    @State private var aviableCurrencies = CurrencyLibary().getAvaibleCurrencies().shuffled()
     
     @State private var showFinancyProInformation = false
     @State private var isInAuth = false
@@ -31,18 +35,32 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Allgemein"), footer: Text("Aktiviere \(getBiometricTypeName()) um beim öffnen der App zu aktivieren. Achtung: Fallst du dich nicht mehr identifizieren kannst gehen die Daten verloren!")) {
+                Section(header: Text("settings.auth.header"), footer: Text("settings.auth.footer \(getBiometricTypeName())")) {
                     Toggle(getBiometricTypeName(), isOn: $requiredPasswordIdOnLogin)
                         .onTapGesture {
                             authenticate()
                         }
                 }
                 
-                Section(header: Text("Ermutigungen"), footer: Text("Erhalte Erinnerungen wenn du z.B dein Produkt Ziel fast erreicht hast.")) {
-                    Toggle("Benachrichtigung", isOn: $allowNotifications)
+                Section(header: Text("settings.notify.header"), footer: Text("settings.notify.footer")) {
+                    Toggle("settings.notify.button", isOn: $allowNotifications)
                 }
                 
-                Section(header: Text("Produkte"), footer: Text("Mit dem Kauf eines Produktes unterstützt du Financy und seinen Entwickler.")) {
+                Section(header: Text("currency.name"), footer: Text("settings.currency.footer")) {
+                    Picker("currency.name", selection: $currency) {
+                        ForEach(aviableCurrencies, id: \.key) { key, value in
+                            Text(LocalizedStringKey(key))
+                        }
+                    }
+                    .onChange(of: currency) { _ in
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            showingAppRestartAlert.toggle()
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
+                
+                Section(header: Text("settings.products.header"), footer: Text("settings.products.footer")) {
                     ForEach(storeKit.storeProducts) { product in
                         HStack {
                             Text(product.displayName)
@@ -60,11 +78,11 @@ struct SettingsView: View {
                 }
                 
                 
-                Button("Vorteile von Financy Pro", action: {
+                Button("settings.financypro.button", action: {
                     showFinancyProInformation.toggle()
                 })
                 
-                Button("Abonnement wiederherstellen", action: {
+                Button("settings.products.reestablished", action: {
                     Task {
                         //This call displays a system prompt that asks users to authenticate with their App Store credentials.
                         //Call this function only in response to an explicit user action, such as tapping a button.
@@ -72,13 +90,16 @@ struct SettingsView: View {
                     }
                 })
                 
-                Section(header: Text("Financy " +  Financy().getFinancyVersion() + " © All rights reserved - 2023 "), footer: Text("Entwickelt von Marvin Hülsmann in Deutschland. Fehler oder Ideen können auf Twitter (@marvhuelsmann) eingereicht werden!")) {
-                
+                Section(header: Text("settings.version.header \(Financy().getFinancyVersion())"), footer: Text("settings.version.footer")) {
+                    
                 }
                 
             }
         }
-        .navigationTitle("Einstellungen")
+        .alert(isPresented: $showingAppRestartAlert) {
+            Alert(title: Text("settings.alert.title"), message: Text("settings.alert.message"), dismissButton: .default(Text("Ok!")))
+        }
+        .navigationTitle("settings.navigationTitle")
         .sheet(isPresented: $showFinancyProInformation, content: {
             SplashScreenFinancyPro()
         })
@@ -86,27 +107,27 @@ struct SettingsView: View {
     }
     
     func authenticate() {
-            isInAuth = true
-            let context = LAContext()
-            var error: NSError?
+        isInAuth = true
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) || context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            let reason = "Um Zugriff auf deine Geldeingänge und Produkte zu haben."
             
-            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) || context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-                let reason = "Um Zugriff auf deine Geldeingänge und Produkte zu haben."
-                
-                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                    DispatchQueue.main.async {
-                        if success {
-                            isInAuth = false
-                        } else {
-                            isInAuth = false
-                            requiredPasswordIdOnLogin.toggle()
-                        }
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        isInAuth = false
+                    } else {
+                        isInAuth = false
+                        requiredPasswordIdOnLogin.toggle()
                     }
                 }
-            } else {
-                isInAuth = false
-                requiredPasswordIdOnLogin.toggle()
             }
+        } else {
+            isInAuth = false
+            requiredPasswordIdOnLogin.toggle()
+        }
     }
     
 }

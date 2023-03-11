@@ -29,7 +29,7 @@ struct CreateGroup: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Gruppen Icon*")) {
+                Section(header: Text("creategroup.icon")) {
                     Picker("Icon", selection: $iconName) {
                         ForEach(avaibleIcons, id: \.self) { icon in
                             Image(systemName: icon)
@@ -39,25 +39,25 @@ struct CreateGroup: View {
                     .frame(height: 100)
                 }
                 
-                Section(header: Text("Gruppen Farbe*")) {
-                    Picker("Farbe", selection: $groupColor) {
+                Section(header: Text("creategroup.color")) {
+                    Picker("color", selection: $groupColor) {
                         ForEach(avaibleColors, id: \.key) { key, value in
-                            Text(key)
+                            Text(LocalizedStringKey(key))
                         }
                     }
                     .pickerStyle(.wheel)
                     .frame(height: 100)
                 }
                 
-                Section(header: Text("Gruppen Name*")) {
-                    TextField("Möbel", text: $name)
+                Section(header: Text("creategroup.name")) {
+                    TextField("Watch", text: $name)
                 }
                 
                 
-                Section(footer: Text("Hinweis: Um deine Gruppe zu sehen benötigt sie mindestens ein Produkt, du kannst die Produkt Gruppen in den Produkt Einstellung ändern!")) {
+                Section(footer: Text("creategroup.alert")) {
                     HStack(alignment: .center) {
                         Spacer()
-                        Button("Gruppe hinzufügen") {
+                        Button("creategroup.add") {
                             if name != "" && iconName != "" {
                                 makeProdukt()
                             } else {
@@ -72,7 +72,7 @@ struct CreateGroup: View {
                 if !hasFillForm {
                     HStack {
                         Spacer()
-                        Text("Es wurden nicht alle benötigten Felder ausgefüllt!")
+                        Text("form.fillnotall")
                             .bold()
                             .multilineTextAlignment(.center)
                         Spacer()
@@ -81,7 +81,7 @@ struct CreateGroup: View {
                 }
             }
         }
-        .navigationTitle("Neue Gruppe")
+        .navigationTitle("creategroup.navigationTitle")
     }
     
     func makeProdukt() {

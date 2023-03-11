@@ -42,7 +42,7 @@ struct ProductPlanner: View {
             }
             .padding(.top, 3)
             HStack {
-                Text("Transaktionen")
+                Text("product.transaction")
                     .font(.title)
                     .bold()
                     .padding(.top, 5)
@@ -57,15 +57,15 @@ struct ProductPlanner: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     NavigationLink(destination: CreateTransaction(productID: productID)) {
-                        Text("Geld hinzufügen")
+                        Text("product.addmoney")
                         Image(systemName: "plus")
                     }
                     NavigationLink(destination: ChangeGroup(productUUID: productID, groupName: getGroupName()!)) {
-                        Text("Gruppe bearbeiten")
+                        Text("products.editgroup")
                         Image(systemName: "square.on.square.squareshape.controlhandles")
                     }
                     NavigationLink(destination: EditProduct(productID: productID, productName: productName, productIcon: productIcon, productPrice: String(productAmount))) {
-                        Text("Produkt bearbeiten")
+                        Text("product.editproduct")
                         Image(systemName: "pencil")
                     }
                     .disabled(!storeKit.hasFinancyPro())
@@ -125,19 +125,18 @@ struct TransactionDetailView: View {
                                     VStack(alignment: .leading) {
                                         Text(transaction.reason!)
                                             .bold()
-                                        Text("\(isSameDay(date1: transaction.date!, date2: Date()) ? "Hinzugefügt" : "Planmäßig") am \((((transaction.date?.formatted(.dateTime.month().day()))!)))")
+                                        Text(isSameDay(date1: transaction.date!, date2: Date()))
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
                                     }
                                     Spacer()
-                                    Text("\(transaction.money)€")
+                                    Text("\(transaction.money)\(CurrencyLibary().getSpecificIcon())")
                                 }
                             }
                         }
                     }
                     .onDelete(perform: deleteProduct)
                 }
-                .environment(\.locale, Locale.init(identifier: "de"))
                 .cornerRadius(15)
                 .padding(10)
             } else {
@@ -145,21 +144,21 @@ struct TransactionDetailView: View {
                 VStack {
                     Image(systemName: "nosign.app")
                         .font(.system(size: 80))
-                    Text("Fehlende Daten")
+                    Text("product.emptydata")
                         .font(.largeTitle)
                         .bold()
                 }.padding(.bottom, 40)
             }
     }
     
-    func isSameDay(date1: Date, date2: Date) -> Bool {
+    func isSameDay(date1: Date, date2: Date) -> LocalizedStringKey {
         let diff = Calendar.current.dateComponents([.day], from: date1, to: date2)
         if date1 > date2 {
-            return false
+            return "product.sheduledadded \(date1.formatted(.dateTime.month().day()))"
         } else if diff.day == 0 {
-            return true
+            return "product.added \(date1.formatted(.dateTime.month().day()))"
         } else {
-            return true
+            return "product.added \(date1.formatted(.dateTime.month().day()))"
         }
     }
     
@@ -208,7 +207,7 @@ struct WeeklySpendDetailView: View {
         VStack {
             VStack {
                 HStack {
-                    Text(SettingsView().showXYBarMark ? "Wochen Aktivität" : "Insgesamte Aktivität")
+                    Text(SettingsView().showXYBarMark ? "product.activity.weekly" : "product.activity.alltime")
                         .foregroundColor(!darkMode ? .black : .gray)
                         .font(.callout)
                         .fontWeight(.medium)
@@ -242,7 +241,7 @@ struct WeeklySpendDetailView: View {
         .cornerRadius(10)
     }
     
-    func trendingStatus() -> String {
+    func trendingStatus() -> LocalizedStringKey {
         var i = 0
         for transaction in transactions {
             if transaction.productID == productID {
@@ -253,11 +252,11 @@ struct WeeklySpendDetailView: View {
             return ""
         } else {
             if i >= 8 {
-                return "Hoher aufsteigender Trend"
+                return "product.trends.highest"
             } else if i >= 5 {
-                return "Wachsender Trend"
+                return "product.trends.middle"
             } else if i >= 2 {
-                return "Aufsteigender Trend"
+                return "product.trends.lowest"
             }
         }
         return ""
@@ -276,21 +275,21 @@ struct GetMoneyInformationDetailView: View {
         VStack {
             VStack {
                 HStack {
-                    Text("In 30 Tagen kaufen?")
+                    Text("product.buylater.header")
                         .foregroundColor(!darkMode ? .white : .black)
                         .font(.callout)
                         .fontWeight(.medium)
                     Spacer()
                 }
                 HStack {
-                    Text(isReadyFor30Days() ? "Bereit!" : "Nein!")
+                    Text(isReadyFor30Days() ? "product.buylater.ready" : "product.buylater.notready")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(isReadyFor30Days() ? .green : .red)
                     Spacer()
                 }
                 HStack {
-                    Text("+\(amountOfMoneyIn30Days())€ in 30 Tagen.")
+                    Text("product.buylater.footer \(amountOfMoneyIn30Days()) \(CurrencyLibary().getSpecificIcon())")
                         .font(.subheadline)
                         .foregroundColor(Color(UIColor.lightGray))
                     Spacer()
@@ -367,24 +366,24 @@ struct AllSpendAmountDetailView: View {
         VStack {
             VStack {
                 HStack {
-                    Text("Aktuelle Bilanz")
+                    Text("product.average.header")
                         .foregroundColor(!darkMode ? .white : .black)
                         .font(.callout)
                         .fontWeight(.medium)
                     Spacer()
                 }
                 HStack {
-                    Text("\(getAlreadySpendAmount())€")
+                    Text("\(getAlreadySpendAmount())\(CurrencyLibary().getSpecificIcon())")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(!isPriceReached() ? (isNearOnTheReachedPrice() ? .yellow : !darkMode ? .white : .black) : .green)
                     Spacer()
                 }
                 HStack {
-                    Text("Dein Ziel:")
+                    Text("product.average.footer")
                         .font(.subheadline)
                         .foregroundColor(Color(UIColor.lightGray))
-                    Text("\(productAmount)€" )
+                    Text("\(productAmount)\(CurrencyLibary().getSpecificIcon())" )
                         .foregroundColor(Color(UIColor.lightGray))
                         .font(.subheadline)
                         .bold()

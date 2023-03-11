@@ -28,12 +28,12 @@ struct SplashScreen: View {
                     
                     mode.wrappedValue.dismiss()
                 }) {
-                    Text("Los gehts")
+                    Text("splashscreen.start")
                         .customButton()
                 }
                 .padding(.horizontal)
                 
-                Text("Füge dein erstes Produkt hinzu und tracke es um Geldeingänge besser zu sortieren und im Überblick zu halten.")
+                Text("splashscreen.footer")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -50,8 +50,8 @@ struct SplashScreen: View {
 
 
 struct InformationDetailView: View {
-    var title: String = "title"
-    var subTitle: String = "subTitle"
+    var title: LocalizedStringKey = "title"
+    var subTitle: LocalizedStringKey = "subTitle"
     var imageName: String = "car"
     
     var body: some View {
@@ -81,7 +81,7 @@ struct InformationDetailView: View {
 struct TitleView: View {
     var body: some View {
         VStack {
-            Text("Willkommen bei")
+            Text("splashscreen.welcome")
                 .customTitleText()
             
             Text("Financy")
@@ -125,11 +125,11 @@ extension Color {
 struct InformationContainerView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            InformationDetailView(title: "Planen", subTitle: "Plane, wann du dir ein Produkt leisten kannst und an welchem Zeitpunkt ein gutes Kaufdatum ist!", imageName: "list.bullet.rectangle")
+            InformationDetailView(title: "splashscreen.info.plan.title", subTitle: "splashscreen.info.plan.subTitle", imageName: "list.bullet.rectangle")
             
-            InformationDetailView(title: "Benachrichtigungen", subTitle: "Wenn du willst erinnert dich Financy an deine aktuellen Produkt Zielen.", imageName: "bell")
+            InformationDetailView(title: "splashscreen.info.notify.title", subTitle: "splashscreen.info.notify.subTitle", imageName: "bell")
             
-            InformationDetailView(title: "Privat", subTitle: "Financy teilt keine Daten in Clouds. Sie bleiben einzig und alleine auf deinem Gerät gespeichert.", imageName: "lock")
+            InformationDetailView(title: "splashscreen.info.privacy.title", subTitle: "splashscreen.info.privacy.subTitle", imageName: "lock")
         }
         .padding(.horizontal)
     }

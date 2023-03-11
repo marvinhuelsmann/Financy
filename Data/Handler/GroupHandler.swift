@@ -109,7 +109,7 @@ struct GroupHandler {
     func createNoCategoryGroup(productUUID: UUID, viewContext: NSManagedObjectContext) {
             let newGroup = Groups(context: viewContext)
             newGroup.uuid = UUID(uuidString: "c758ec2a-a0de-11ed-a8fc-0242ac120002")!
-            newGroup.name = "Nicht gruppiert"
+            newGroup.name = String(localized: "group.notgrouped")
             newGroup.date = Date()
             newGroup.icon = "moon.fill"
             newGroup.color = "Grau"

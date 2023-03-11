@@ -25,7 +25,7 @@ struct EditGroupDetail: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Gruppen Icon*")) {
+                Section(header: Text("creategroup.icon")) {
                     Picker("Icon", selection: $groupIcon) {
                         ForEach(avaibleIcons, id: \.self) { icon in
                             Image(systemName: icon)
@@ -35,24 +35,24 @@ struct EditGroupDetail: View {
                     .frame(height: 100)
                 }
                 
-                Section(header: Text("Gruppen Farbe*")) {
-                    Picker("Farbe", selection: $groupColor) {
+                Section(header: Text("creategroup.color")) {
+                    Picker("color", selection: $groupColor) {
                         ForEach(avaibleColors, id: \.key) { key, value in
-                            Text(key)
+                            Text(LocalizedStringKey(key))
                         }
                     }
                     .pickerStyle(.wheel)
                     .frame(height: 100)
                 }
                 
-                Section(header: Text("Gruppen Name*")) {
-                    TextField("Freizeit", text: $groupName)
+                Section(header: Text("creategroup.name")) {
+                    TextField("Watch", text: $groupName)
                 }
                 
-                Section(footer: Text("Hinweis: Um deine Gruppe zu sehen benötigt sie mindestens ein Produkt, du kannst die Produkt Gruppen in den Produkt Einstellung ändern!")) {
+                Section(footer: Text("creategroup.alert")) {
                     HStack(alignment: .center) {
                         Spacer()
-                        Button("Gruppe bearbeiten") {
+                        Button("editgroup.navigationTitle") {
                             if groupName != "" {
                                 editGroup()
                             } else {
@@ -67,7 +67,7 @@ struct EditGroupDetail: View {
                 if !hasFillForm {
                     HStack {
                         Spacer()
-                        Text("Es wurden nicht alle benötigten Felder ausgefüllt!")
+                        Text("form.fillnotall")
                             .bold()
                             .multilineTextAlignment(.center)
                         Spacer()
@@ -76,7 +76,7 @@ struct EditGroupDetail: View {
                 }
             }
         }
-        .navigationTitle("Gruppe bearbeiten")
+        .navigationTitle("editgroup.navigationTitle")
     }
     
     func editGroup() {

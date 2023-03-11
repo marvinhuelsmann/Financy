@@ -32,7 +32,7 @@ struct CreateProduct: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Produkt Icon*")) {
+                Section(header: Text("newproduct.icon")) {
                     Picker("Icon", selection: $iconName) {
                         ForEach(avaibleIcons, id: \.self) { icon in
                             Image(systemName: icon)
@@ -42,11 +42,11 @@ struct CreateProduct: View {
                     .frame(height: 100)
                 }
                 
-                Section(header: Text("Produkt Name*")) {
+                Section(header: Text("newproduct.name")) {
                     TextField("iPhone 14 Pro", text: $name)
                 }
                 
-                Section(header: Text("Preis")) {
+                Section(header: Text("newproduct.price")) {
                     TextField("1299", text: $price)
                         .keyboardType(.numberPad)
                         .onReceive(Just(price)) { newValue in
@@ -60,7 +60,7 @@ struct CreateProduct: View {
                 Section {
                     HStack(alignment: .center) {
                         Spacer()
-                        Button("Produkt hinzufügen") {
+                        Button("newproduct.addproduct") {
                             if name != "" && iconName != "" {
                                 makeProdukt(iconName: iconName)
                             } else {
@@ -75,7 +75,7 @@ struct CreateProduct: View {
                 if !hasFillForm {
                     HStack {
                         Spacer()
-                        Text("Es wurden nicht alle benötigten Felder ausgefüllt!")
+                        Text("form.fillnotall")
                             .bold()
                             .multilineTextAlignment(.center)
                         Spacer()
@@ -85,7 +85,7 @@ struct CreateProduct: View {
                 if enoughProducts {
                     HStack {
                         Spacer()
-                        Text("Du hast bereits dein Limit an Produkten erreicht, kaufe Sparky Pro um mehr Produkte hinzufügen zu können!")
+                        Text("newproduct.limit")
                             .multilineTextAlignment(.center)
                         Spacer()
                     }
@@ -93,7 +93,7 @@ struct CreateProduct: View {
                 }
             }
         }
-        .navigationTitle("Neues Produkt")
+        .navigationTitle("newproduct.navigationTitle")
     }
     
     func canCreateMoreProducts() -> Bool {
@@ -137,7 +137,7 @@ struct CreateProduct: View {
         
         saveContext(viewContext: viewContext)
         
-        NotificationHandler().sendNotificationRaw(title: newProduct.name! + " fehlen Gelder!", body: "Es werden mehr Transaktionen um dein Ziel von \(newProduct.price.formatted())Є zu erreichen!", launchIn: (60 * 6) * Int.random(in: 3..<20))
+        NotificationHandler().sendNotificationRaw(title: "newproduct.notify.title \(newProduct.name!)", body: "newproduct.notify.body \(newProduct.price.formatted())", launchIn: (60 * 6) * Int.random(in: 3..<20))
         
     }
     
