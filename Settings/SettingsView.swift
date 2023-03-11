@@ -24,7 +24,6 @@ struct SettingsView: View {
     @AppStorage("productDetailInformation") var productDetailScreen = false
     
     @AppStorage("currency") var currency = "currency.euro"
-    @State private var showingAppRestartAlert = false
     
     @StateObject var storeKit = StoreKitManager()
     @State private var aviableCurrencies = CurrencyLibary().getAvaibleCurrencies().shuffled()
@@ -47,14 +46,9 @@ struct SettingsView: View {
                 }
                 
                 Section(header: Text("currency.name"), footer: Text("settings.currency.footer")) {
-                    Picker("currency.name", selection: $currency) {
+                    Picker("Icon", selection: $currency) {
                         ForEach(aviableCurrencies, id: \.key) { key, value in
                             Text(LocalizedStringKey(key))
-                        }
-                    }
-                    .onChange(of: currency) { _ in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            showingAppRestartAlert.toggle()
                         }
                     }
                     .pickerStyle(.menu)
@@ -95,9 +89,6 @@ struct SettingsView: View {
                 }
                 
             }
-        }
-        .alert(isPresented: $showingAppRestartAlert) {
-            Alert(title: Text("settings.alert.title"), message: Text("settings.alert.message"), dismissButton: .default(Text("Ok!")))
         }
         .navigationTitle("settings.navigationTitle")
         .sheet(isPresented: $showFinancyProInformation, content: {

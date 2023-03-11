@@ -212,5 +212,3 @@
 "settings.version.header %@" = "Financy %@ © All rights reserved - 2023";
 "settings.version.footer" = "Entwickelt von Marvin Hülsmann in Deutschland. Fehler oder Ideen können auf Twitter (@marvhuelsmann) eingereicht werden";
 
-"settings.alert.title" = "Warnung!";
-"settings.alert.message" = "Diese Änderung benötigt ein App Neustart, bis alle Währungen vollständig geändert sind!";

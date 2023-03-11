@@ -18,6 +18,11 @@
           "description" : "Für maximal 15 Produkte",
           "displayName" : "10 extra Produkte",
           "locale" : "de"
+        },
+        {
+          "description" : "Pour un maximum de 15 produits",
+          "displayName" : "10 produits supplémentaires",
+          "locale" : "fr"
         }
       ],
       "productID" : "com.marvhuelsmann.financy.products.10",
@@ -62,6 +67,11 @@
               "description" : "Standard Beschreibung",
               "displayName" : "Financy Pro",
               "locale" : "de"
+            },
+            {
+              "description" : "",
+              "displayName" : "Financy Pro",
+              "locale" : "fr"
             }
           ],
           "productID" : "com.marvhuelsmann.financy.pro",

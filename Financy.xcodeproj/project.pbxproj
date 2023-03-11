@@ -76,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4B39E18729BD2D120068AF2F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4B39E18829BD319E0068AF2F /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4B54ECC42975933100B5B762 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4B54ECC62975933100B5B762 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4B54ECDC297593B300B5B762 /* IconLibary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLibary.swift; sourceTree = "<group>"; };
@@ -407,6 +409,8 @@
 			knownRegions = (
 				en,
 				de,
+				fr,
+				"en-GB",
 			);
 			mainGroup = 4BF37B9529368F6C000146CC;
 			productRefGroup = 4BF37B9F29368F6C000146CC /* Products */;
@@ -523,6 +527,8 @@
 			children = (
 				4B63372129BB9F8000261AED /* de */,
 				4B63372329BB9F9B00261AED /* en */,
+				4B39E18729BD2D120068AF2F /* fr */,
+				4B39E18829BD319E0068AF2F /* en-GB */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

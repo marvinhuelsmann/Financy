@@ -79,6 +79,9 @@ struct ContentView: View {
                     }
                 }
             })
+            .onAppear {
+                viewContext.refreshAllObjects()
+            }
             .navigationTitle("products.navigationTitle")
         }
     }
@@ -112,6 +115,8 @@ struct DetailGroupView: View {
     
     var groupedProductUUID: UUID
     var groupColor: String
+    
+    @State private var currencyLibary = CurrencyLibary()
     var body: some View {
         ForEach(products, id: \.self) { product in
             if groupedProductUUID == product.uuid {
@@ -132,7 +137,7 @@ struct DetailGroupView: View {
                                 .foregroundColor(.gray)
                         }
                         Spacer()
-                        Text("\(product.price)\(CurrencyLibary().getSpecificIcon())")
+                        Text("\(product.price)" + currencyLibary.getSpecificIcon())
                             .bold()
                     }
                 }
