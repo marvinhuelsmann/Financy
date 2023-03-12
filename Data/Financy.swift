@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Financy {
-    private var version: String = "1.0.1"
+    private var version: String = "1.0.3"
     private var betaVersion: Bool = true
     
     func getFinancyVersion() -> String {

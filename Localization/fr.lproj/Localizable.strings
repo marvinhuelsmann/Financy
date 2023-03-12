@@ -178,7 +178,7 @@
 "newproduct.icon" = "Icône du produit*";
 
 "newproduct.notify.title %@" = "%@ fonds manquants!";
-"newproduct.notify.body %lld" = "Il y aura plus de transactions pour atteindre votre objectif de %lld!";
+"newproduct.notify.body %@" = "Il y aura plus de transactions pour atteindre votre objectif de %@!";
 
 
 "newproduct.limit" = "Vous avez déjà atteint votre limite de produits, achetez Sparky Pro pour pouvoir ajouter plus de produits !";
