@@ -3,8 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>10x Products</key>
-	<string>com.marvhuelsmann.financy.products.10</string>
+	<string>com.marvhuelsmann.financy.products.product</string>
 	<key>Financy Pro</key>
-	<string>com.marvhuelsmann.financy.pro</string>
+	<string>com.marvhuelsmann.financy.products.pro</string>
 </dict>
 </plist>

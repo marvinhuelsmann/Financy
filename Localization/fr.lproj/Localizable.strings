@@ -198,16 +198,16 @@
 "settings.auth.footer %@" = "Activer %@ à activer lors de l'ouverture de l'application. Attention : Si vous ne parvenez plus à vous identifier, les données seront perdues !";
 
 "settings.notify.header" = "Encouragements";
-"settings.notify.footer" = "Receive reminders when you have almost reached your product goal, for example.";
-"settings.notify.button" = "Notifications";
+"settings.notify.footer" = "Recevez des rappels lorsque vous avez presque atteint votre objectif de produit, par exemple.";
+"settings.notify.button" = "Avis";
 
-"settings.products.header" = "Products";
-"settings.products.footer" = "With the purchase of a product you support Financy and its developer.";
+"settings.products.header" = "Des produits";
+"settings.products.footer" = "Avec l'achat d'un produit, vous soutenez la finance et son développeur.";
 
-"settings.currency.footer" = "Choose your favorite display currency";
+"settings.currency.footer" = "Choisissez votre devise d'affichage préférée";
 
-"settings.financypro.button" = "Benefits of Finance Pro";
-"settings.products.reestablished" = "Restore purchases";
+"settings.financypro.button" = "Avantages de Finance Pro";
+"settings.products.reestablished" = "Restaurer les achats";
 
 "settings.version.header %@" = "Financy %@ © All rights reserved - 2023";
 "settings.version.footer" = "Développé par Marvin Hülsmann en Allemagne. Les bogues ou les idées peuvent être soumis sur Twitter (@marvhuelsmann).";
