@@ -54,23 +54,6 @@ struct SettingsView: View {
                     .pickerStyle(.menu)
                 }
                 
-                Section(header: Text("settings.products.header"), footer: Text("settings.products.footer")) {
-                    ForEach(storeKit.storeProducts) { product in
-                        HStack {
-                            Text(product.displayName)
-                                .bold()
-                            Spacer()
-                            Button(action: {
-                                // purchase this product
-                                Task { try await storeKit.purchase(product)
-                                }
-                            }) {
-                                CourseItem(storeKit: storeKit, product: product)
-                            }
-                        }
-                    }
-                }
-                
                 
                 Button("settings.financypro.button", action: {
                     showFinancyProInformation.toggle()
@@ -84,7 +67,7 @@ struct SettingsView: View {
                     }
                 })
                 
-                Section(header: Text("settings.version.header \(Financy().getFinancyVersion())"), footer: Text("settings.version.footer")) {
+                Section(header: Text("settings.version.header \(Financy().getFinancyVersion() + " (" + Financy().getBuildNumber() + ")")"), footer: Text("settings.version.footer")) {
                     
                 }
                 
@@ -121,30 +104,6 @@ struct SettingsView: View {
         }
     }
     
-}
-
-struct CourseItem: View {
-    @ObservedObject var storeKit : StoreKitManager
-    @State var isPurchased: Bool = false
-    var product: Product
-    
-    var body: some View {
-        VStack {
-            if isPurchased {
-                Text(Image(systemName: "checkmark"))
-                    .bold()
-                    .padding(10)
-            } else {
-                Text(product.displayPrice)
-                    .padding(10)
-            }
-        }
-        .onChange(of: storeKit.purchasedCourses) { course in
-            Task {
-                isPurchased = (try? await storeKit.isPurchased(product)) ?? false
-            }
-        }
-    }
 }
 
 struct SettingsView_Previews: PreviewProvider {

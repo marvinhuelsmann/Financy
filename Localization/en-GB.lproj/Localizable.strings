@@ -46,8 +46,8 @@
 
 
 /* SplashScreenFinancyPro */
-"splashscreen.financy.start" = "Take off";
-"splashscreen.financy.footer" = "Get a 3-day trial with your first purchase of Financy Pro.";
+"splashscreen.financy.start %@" = "Subscribe for %@ every 3 months";
+"splashscreen.financy.footer %@" = "Financy Pro is available for 5.29%@ / 3 months, with the subscription, you can edit added products and have no limit on adding new products.";
 
 "splashscreen.financy.welcome" = "Take off with";
 
@@ -206,9 +206,9 @@
 
 "settings.currency.footer" = "Choose your favorite display currency";
 
-"settings.financypro.button" = "Benefits of Finance Pro";
+"settings.financypro.button" = "Become a Financy Pro!";
 "settings.products.reestablished" = "Restore purchases";
 
-"settings.version.header %@" = "Financy %@ © All rights reserved - 2023";
+"settings.version.header %@" = "Financy %@ © All rights reserved 2023";
 "settings.version.footer" = "Developed by Marvin Hülsmann in Germany. Bugs or ideas can be submitted on Twitter (@marvhuelsmann)";
 

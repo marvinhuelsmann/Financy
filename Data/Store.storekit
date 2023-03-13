@@ -4,31 +4,7 @@
 
   ],
   "products" : [
-    {
-      "displayPrice" : "3.49",
-      "familyShareable" : false,
-      "internalID" : "751F3AA0",
-      "localizations" : [
-        {
-          "description" : "for max 15 products",
-          "displayName" : "10 extra products",
-          "locale" : "en_US"
-        },
-        {
-          "description" : "Für maximal 15 Produkte",
-          "displayName" : "10 extra Produkte",
-          "locale" : "de"
-        },
-        {
-          "description" : "Pour un maximum de 15 produits",
-          "displayName" : "10 produits supplémentaires",
-          "locale" : "fr"
-        }
-      ],
-      "productID" : "com.marvhuelsmann.financy.products.product",
-      "referenceName" : "10x Products",
-      "type" : "NonConsumable"
-    }
+
   ],
   "settings" : {
 

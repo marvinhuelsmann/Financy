@@ -9,14 +9,14 @@ import Foundation
 
 
 struct Financy {
-    private var version: String = "1.0.3"
-    private var betaVersion: Bool = true
+    private let version = Bundle.main.appVersionLong
+    private let buildNumber = Bundle.main.appBuild
     
     func getFinancyVersion() -> String {
         return version
     }
     
-    func isBetaVersion() -> Bool {
-        return betaVersion
+    func getBuildNumber() -> String {
+        return buildNumber
     }
 }

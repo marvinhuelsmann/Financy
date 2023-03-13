@@ -45,7 +45,7 @@ class NotificationHandler: ObservableObject {
     ///   - title: Notification title
     ///   - body: Notification body
     ///   - launchIn: Notification will be launched on this date
-    func sendNotificationRaw(title: String, body: String, launchIn: Int) {
+    func sendNotificationRaw(title: String, body: String, productUUID: UUID, launchIn: Int) {
         if SettingsView().allowNotifications {
             let content = UNMutableNotificationContent()
             content.title = title
@@ -56,10 +56,16 @@ class NotificationHandler: ObservableObject {
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(launchIn), repeats: false)
             
             // choose a random identifier
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: productUUID.uuidString, content: content, trigger: trigger)
             
             // add our notification request
             UNUserNotificationCenter.current().add(request)
         }
+    }
+    
+    func cancelSpecificNotification(productUUID: UUID) {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removePendingNotificationRequests(withIdentifiers: [productUUID.uuidString])
     }
 }

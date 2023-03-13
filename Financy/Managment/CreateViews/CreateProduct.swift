@@ -137,7 +137,7 @@ struct CreateProduct: View {
         
         saveContext(viewContext: viewContext)
         
-        NotificationHandler().sendNotificationRaw(title: String(localized: "newproduct.notify.title \(newProduct.name!)"), body: String(localized: "newproduct.notify.body \(newProduct.price.formatted() + CurrencyLibary().getSpecificIcon())"), launchIn: (60 * 2) * Int.random(in: 2..<29))
+        NotificationHandler().sendNotificationRaw(title: String(localized: "newproduct.notify.title \(newProduct.name!)"), body: String(localized: "newproduct.notify.body \(newProduct.price.formatted() + CurrencyLibary().getSpecificIcon())"), productUUID: uuid, launchIn: (60 * 2) * Int.random(in: 2..<29))
         
     }
     

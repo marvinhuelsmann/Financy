@@ -137,7 +137,7 @@ struct DetailGroupView: View {
                                 .foregroundColor(.gray)
                         }
                         Spacer()
-                        Text("\(product.price)" + currencyLibary.getSpecificIcon())
+                        Text("\(product.price.formatted())" + currencyLibary.getSpecificIcon())
                             .bold()
                     }
                 }
@@ -167,9 +167,10 @@ struct DetailGroupView: View {
             if products.isEmpty {
                 removeNoCategoryGroup(viewContext: viewContext)
             }
+            
+            deleteLinkedGroupedProductEntry()
+            
         }
-        deleteLinkedGroupedProductEntry()
-        
     }
     
     func deleteLinkedGroupedProductEntry() {
@@ -194,6 +195,7 @@ struct DetailGroupView: View {
         
         for groupedProduct in groupedProducts {
             if deletableGroupedUUIDs.contains(groupedProduct.productUUID!) {
+                NotificationHandler().cancelSpecificNotification(productUUID: groupedProduct.productUUID!)
                 viewContext.delete(groupedProduct)
             }
         }
