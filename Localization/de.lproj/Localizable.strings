@@ -180,7 +180,7 @@
 "newproduct.notify.title %@" = "%@ fehlen Gelder!";
 "newproduct.notify.body %@" = "Es werden mehr Transaktionen benötigt, um dein Ziel von %@ zu erreichen!";
 
-"newproduct.limit" = "Du hast bereits dein Limit an Produkten erreicht, kaufe Sparky Pro um mehr Produkte hinzufügen zu können!";
+"newproduct.limit" = "Du hast bereits dein Limit an Produkten erreicht, kaufe Financy Pro um mehr Produkte hinzufügen zu können!";
 
 
 
@@ -203,7 +203,7 @@
 "settings.products.header" = "Produkte";
 "settings.products.footer" = "Mit dem Kauf eines Produktes unterstützt du Financy und seinen Entwickler.";
 
-"settings.currency.footer" = "Wähle deine favorisierte anzeige Währung aus";
+"settings.currency.footer" = "Wähle deine favorisierte Anzeige Währung aus";
 
 "settings.financypro.button" = "Werde zum Financy Pro!";
 "settings.products.reestablished" = "Käufe wiederherstellen";
