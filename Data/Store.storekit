@@ -24,7 +24,7 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "6.49",
+          "displayPrice" : "7.29",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "42595414",
@@ -50,7 +50,7 @@
               "locale" : "fr"
             }
           ],
-          "productID" : "com.marvhuelsmann.financy.products.pro",
+          "productID" : "com.marvhuelsmann.subscription.financypro",
           "recurringSubscriptionPeriod" : "P3M",
           "referenceName" : "Financy Pro",
           "subscriptionGroupID" : "22EA9FBE",
