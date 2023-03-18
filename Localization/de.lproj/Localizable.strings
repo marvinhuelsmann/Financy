@@ -91,6 +91,8 @@
 "products.new" = "Neues Produkt";
 "products.editgroup" = "Gruppe bearbeiten";
 
+"products.statistics" = "Statistiken";
+
 "products.detail.added %@" = "Hinzugefügt am %@";
 
 
@@ -188,6 +190,10 @@
 "editproduct.navigationTitle" = "Produkt speichern";
 "editproduct.edit" = "Produkt bearbeiten";
 
+
+/* TransactionStatistics */
+"statistics.alltime %@" = "Es wurden bis jetzt %@ für Transaktionen der Financy Produkte ausgegeben.";
+"statistics.products %@" = "Du hast momentan Insgesamt Produkte im Wert von %@ in Financy hinzugefügt.";
 
 
 /* SettingsView.swift */

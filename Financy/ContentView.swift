@@ -56,17 +56,27 @@ struct ContentView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
-                        NavigationLink(destination: CreateProduct()) {
-                            HStack {
-                                Text("products.new")
-                                Image(systemName: "plus")
+                        Section {
+                            NavigationLink(destination: CreateProduct()) {
+                                HStack {
+                                    Text("products.new")
+                                    Image(systemName: "plus")
+                                }
+                            }
+                            NavigationLink(destination: EditGroup()) {
+                                Text("products.editgroup")
+                                Image(systemName: "rectangle.3.group")
+                            }
+                            .disabled(products.isEmpty)
+                        }
+                        Section {
+                            NavigationLink(destination: TransactionStatistics()) {
+                                HStack {
+                                    Text("products.statistics")
+                                    Image(systemName: "settings")
+                                }
                             }
                         }
-                        NavigationLink(destination: EditGroup()) {
-                            Text("products.editgroup")
-                            Image(systemName: "rectangle.3.group")
-                        }
-                        .disabled(products.isEmpty)
                     } label: {
                         Image(systemName: "plus")
                     }

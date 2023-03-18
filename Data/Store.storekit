@@ -15,7 +15,7 @@
       "localizations" : [
 
       ],
-      "name" : "com.marvhuelsmann.financy.pro",
+      "name" : "Financy Abonnements",
       "subscriptions" : [
         {
           "adHocOffers" : [
@@ -24,15 +24,11 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "7.29",
+          "displayPrice" : "7.39",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "42595414",
-          "introductoryOffer" : {
-            "internalID" : "EA4F2AB0",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P3D"
-          },
+          "introductoryOffer" : null,
           "localizations" : [
             {
               "description" : "Default description",
@@ -50,7 +46,7 @@
               "locale" : "fr"
             }
           ],
-          "productID" : "com.marvhuelsmann.subscription.financypro",
+          "productID" : "com.marvhuelsmann.subscriptions.financy.pro",
           "recurringSubscriptionPeriod" : "P3M",
           "referenceName" : "Financy Pro",
           "subscriptionGroupID" : "22EA9FBE",

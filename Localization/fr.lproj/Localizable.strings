@@ -46,8 +46,8 @@
 
 
 /* SplashScreenFinancyPro */
-"splashscreen.financy.start" = "Abonnez-vous pour %@ tous les 3 mois";
-"splashscreen.financy.footer" = "Financy Pro est disponible pour 7,39% @ / 3 mois, avec l'abonnement, vous pouvez modifier les produits ajoutés et n'avoir aucune limite sur l'ajout de nouveaux produits.";
+"splashscreen.financy.start %@" = "Abonnez-vous pour %@ tous les 3 mois";
+"splashscreen.financy.footer %@" = "Financy Pro est disponible pour 7,39% @ / 3 mois, avec l'abonnement, vous pouvez modifier les produits ajoutés et n'avoir aucune limite sur l'ajout de nouveaux produits.";
 
 "splashscreen.financy.welcome" = "Décollez avec";
 
@@ -91,6 +91,8 @@
 "products.empty" = "Produits vides";
 "products.new" = "Nouveau produit";
 "products.editgroup" = "Modifier le groupe";
+
+"products.statistics" = "Statistiques";
 
 "products.detail.added %@" = "Ajouté le %@";
 
@@ -188,6 +190,12 @@
 /* EditProduct.swift */
 "editproduct.navigationTitle" = "Enregistrer le produit";
 "editproduct.edit" = "Modifier le produit";
+
+
+
+/* TransactionStatistics */
+"statistics.alltime %@" = "Jusqu'à présent, %@ a été émis pour les transactions des produits financiers.";
+"statistics.products %@" = "Vous avez actuellement ajouté un total de %@ de produits dans Finance.";
 
 
 

@@ -8,6 +8,19 @@
 import SwiftUI
 import StoreKit
 
+struct ActivityIndicator: UIViewRepresentable {
+    
+    typealias UIView = UIActivityIndicatorView
+    var isAnimating: Bool
+    fileprivate var configuration = { (indicator: UIView) in }
+    
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UIView { UIView() }
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<Self>) {
+        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+        configuration(uiView)
+    }
+}
+
 struct SplashScreenFinancyPro: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @StateObject var storeKit = StoreKitManager()
@@ -15,7 +28,7 @@ struct SplashScreenFinancyPro: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
-        
+                
                 TitleFinancyView()
                 
                 InformationFinancyContainerView()
@@ -59,8 +72,8 @@ struct SplashScreenFinancyPro: View {
                 
             }
             .padding(.top, 110)
-           
-
+            
+            
         }
     }
 }
@@ -68,6 +81,7 @@ struct SplashScreenFinancyPro: View {
 struct SubscriptionView: View {
     @ObservedObject var storeKit : StoreKitManager
     @State var isPurchased: Bool = false
+    @State var isLoading: Bool = false
     var product: Product
     
     var body: some View {
@@ -83,17 +97,37 @@ struct SubscriptionView: View {
                     Spacer()
                 }
             } else {
-                Button(action: {
-                    let generator = UINotificationFeedbackGenerator()
-                    generator.notificationOccurred(.success)
-                    
-                    Task { try await storeKit.purchase(product) }
-
-                }) {
-                    Text("splashscreen.financy.start \(String(product.price.formatted() + CurrencyLibary().getSpecificIcon()))")
-                        .customButton()
+                if !isLoading {
+                    Button(action: {
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.success)
+                        
+                        isLoading = true
+                        
+                      
+                        
+                        Task {
+                            let transaction = try await storeKit.purchase(product)
+                            
+                            if transaction == nil {
+                                isLoading.toggle()
+                            }
+                        }
+                        
+                    }) {
+                        Text("splashscreen.financy.start \(String(product.price.formatted() + CurrencyLibary().getSpecificIcon()))")
+                            .customButton()
+                    }
+                    .padding(.horizontal)
+                } else {
+                    HStack {
+                        Spacer()
+                        ActivityIndicator(isAnimating: isLoading)
+                            .background(Color.clear)
+                            .padding(.bottom, 15)
+                        Spacer()
+                    }
                 }
-                .padding(.horizontal)
             }
         }
         .onChange(of: storeKit.purchasedCourses) { course in
@@ -118,7 +152,7 @@ struct TitleFinancyView: View {
                 Text("Pro")
                     .fontWeight(.heavy)
                     .font(.system(size: 40))
-
+                
                     .foregroundColor(.accentColor)
             }
         }
@@ -131,7 +165,7 @@ struct InformationFinancyContainerView: View {
         VStack(alignment: .leading) {
             InformationDetailView(title: "splashscreen.financy.info.edit.title", subTitle: "splashscreen.financy.info.edit.subTitle", imageName: "pencil")
             
-          //  InformationDetailView(title: "splashscreen.financy.info.share.title", subTitle: "splashscreen.financy.info.share.subTitle", imageName: "square.and.arrow.up")
+            //  InformationDetailView(title: "splashscreen.financy.info.share.title", subTitle: "splashscreen.financy.info.share.subTitle", imageName: "square.and.arrow.up")
             
             InformationDetailView(title: "splashscreen.financy.info.products.title", subTitle: "splashscreen.financy.info.products.subTitle", imageName: "chart.bar.doc.horizontal.fill")
         }

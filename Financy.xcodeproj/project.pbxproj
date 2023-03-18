@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B39E18A29BFA92B0068AF2F /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39E18929BFA92B0068AF2F /* Bundle.swift */; };
+		4B39E19229C671670068AF2F /* TransactionStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39E19129C671670068AF2F /* TransactionStatistics.swift */; };
 		4B54ECDD297593B300B5B762 /* IconLibary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B54ECDC297593B300B5B762 /* IconLibary.swift */; };
 		4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61C729296B6E8000371740 /* BiometricType.swift */; };
 		4B63372029BB9F8000261AED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B63372229BB9F8000261AED /* Localizable.strings */; };
@@ -80,6 +81,7 @@
 		4B39E18729BD2D120068AF2F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4B39E18829BD319E0068AF2F /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4B39E18929BFA92B0068AF2F /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		4B39E19129C671670068AF2F /* TransactionStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStatistics.swift; sourceTree = "<group>"; };
 		4B54ECC42975933100B5B762 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4B54ECC62975933100B5B762 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		4B54ECDC297593B300B5B762 /* IconLibary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLibary.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				4BF37BE029380614000146CC /* DetailViews */,
 				4BF37BDF2937DF78000146CC /* CreateViews */,
 				4BF37BCC29368FBB000146CC /* ProductPlanner.swift */,
+				4B39E19129C671670068AF2F /* TransactionStatistics.swift */,
 			);
 			path = Managment;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				4B61C72A296B6E8000371740 /* BiometricType.swift in Sources */,
 				4B39E18A29BFA92B0068AF2F /* Bundle.swift in Sources */,
 				4BF37BE22938063E000146CC /* TransactionsChart.swift in Sources */,
+				4B39E19229C671670068AF2F /* TransactionStatistics.swift in Sources */,
 				4BF37BD82936A78F000146CC /* ProductHandler.swift in Sources */,
 				4BF37BCD29368FBB000146CC /* ProductPlanner.swift in Sources */,
 				4BEA120C2969FA2800438E38 /* SplashScreen.swift in Sources */,
@@ -683,7 +687,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marvhuelsmann.Financy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -722,7 +726,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.marvhuelsmann.Financy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

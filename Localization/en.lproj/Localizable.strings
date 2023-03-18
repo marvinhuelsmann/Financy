@@ -92,6 +92,8 @@
 "products.new" = "New product";
 "products.editgroup" = "Edit group";
 
+"products.statistics" = "Statistics";
+
 "products.detail.added %@" = "Added on %@";
 
 
@@ -187,6 +189,12 @@
 /* EditProduct.swift */
 "editproduct.navigationTitle" = "Save product";
 "editproduct.edit" = "Edit product";
+
+
+
+/* TransactionStatistics */
+"statistics.alltime %@" = "Up to now %@ has been issued for transactions of the financial products.";
+"statistics.products %@" = "You have currently added a total of %@ worth of products in Finance.";
 
 
 

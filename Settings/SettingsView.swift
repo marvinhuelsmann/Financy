@@ -78,6 +78,13 @@ struct SettingsView: View {
             SplashScreenFinancyPro()
         })
         .blur(radius: !self.isInAuth ? 0 : 2)
+        .onAppear(perform: {
+            Task {
+                await StoreKitManager().requestProducts()
+                await StoreKitManager().listenForTransactions()
+                await StoreKitManager().updateCustomerProductStatus()
+            }
+        })
     }
     
     func authenticate() {
